@@ -1,0 +1,153 @@
+{
+    "pages": [
+		{
+        "path": "pages/index/index",
+        "style": {
+            "navigationBarTitleText": "董亿在线上门服务",
+			"enablePullDownRefresh":true,
+			"app-plus": {
+			    "softinputNavBar": "none"
+			}
+        }
+    }, {
+        "path": "pages/myself/index",
+        "style": {
+            "navigationBarTitleText": "个人中心",
+			"navigationBarBackgroundColor":"#fd5f5e",
+			"app-plus":{
+				"titleNView":{
+					"titleColor":"#FFFFFF",
+					"buttons":[{
+						"type":"back",
+						"float":"left"
+					}]
+				}
+			}
+        }
+    }, {
+        "path": "pages/project/index",
+        "style": {
+            "navigationBarTitleText": "项目列表"
+        }
+    }
+	,{
+	    "path" : "pages/myself/login",
+	    "style" : {
+			"navigationBarTitleText":"登陆"
+		}
+	}
+        ,{
+            "path" : "pages/myself/forgetPasswd",
+            "style" : {}
+        },
+		{
+		"path" : "pages/myself/registration",
+		"style" : {}	
+		},
+		{
+		"path" : "pages/myself/myInfo",
+		"style" : {
+			"navigationBarTitleText": "个人中心",
+			"navigationBarBackgroundColor":"#fd5f5e",
+			"app-plus":{
+				"titleNView":{
+					"titleColor":"#FFFFFF"
+				}
+			}
+		}	
+		}
+		
+        ,{
+            "path" : "pages/myself/address",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/project/projectDetails",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/project/selectTime",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/myself/orders",
+            "style" : {}
+        }
+        ,
+		{
+		    "path" : "pages/project/staffList",
+		    "style" : {
+				"navigationBarTitleText":"技师列表"
+			}
+		},
+		{
+		    "path" : "pages/project/manageTime",
+		    "style" : {}
+		}
+
+        ,{
+            "path" : "pages/project/stTopro",
+            "style" : {
+				"navigationBarTitleText":"项目列表"
+			}
+        }
+        ,{
+            "path" : "pages/project/stToProTime",
+            "style" : {
+				"navigationBarTitleText":""
+			}
+        }
+        ,{
+            "path" : "pages/myself/editpasswd",
+            "style" : {
+				"navigationBarTitleText":"修改密码"
+			}
+        }        ,{
+            "path" : "pages/myself/orderDetail",
+            "style" : {
+				"navigationBarTitleText":"订单详情"
+			}
+        }
+        ,{
+            "path" : "pages/myself/Recharge",
+            "style" : {
+				"navigationBarTitleText":"余额充值"
+			}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarBackgroundColor":"#FFFFFF",
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "董亿"
+	},
+	"tabBar": {
+		"color":"#555555",
+		"selectedColor":"#eba536",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath":"static/index.png",
+			"selectedIconPath":"static/indexActive.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/project/index",
+			"text": "项目",
+			"iconPath":"static/project.png",
+			"selectedIconPath":"static/projectActive.png"
+		},{
+			"pagePath":"pages/myself/index",
+			"text":"我的",
+			"iconPath":"static/my.png",
+			"selectedIconPath":"static/myActive.png"
+		}]
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}

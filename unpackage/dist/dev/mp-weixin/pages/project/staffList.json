@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "技师列表",
+  "usingComponents": {
+    "uni-nav-bar": "/components/uni-badge/uni-badge"
+  }
+}

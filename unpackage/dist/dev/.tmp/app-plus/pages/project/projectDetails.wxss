@@ -1,0 +1,87 @@
+
+.content {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	width: 750rpx;
+	background-color: #f1f1f1;
+}
+.banner image {
+	width: 750rpx;
+	height: 300rpx;
+}
+.dinggouxuzhi {
+	margin-top: 20rpx;
+	background-color: #fdfaf0;
+	white-space: pre-line;
+}
+.dinggouxuzhi ._h6 {
+	margin-top: 10rpx;
+	margin-left: 30rpx;
+	color: #FF3000;
+}
+.dinggouxuzhi view {
+	color: #823105;
+}
+.detalisdesc {
+	margin-left: 30rpx;
+	font-size: 24rpx;
+	white-space: pre-line;
+}
+.list-text {
+	text-align: right;
+	font-size: 25rpx;
+	margin-bottom: -38rpx;
+	margin-top: 0rpx;
+	line-height: 55rpx;
+}
+.uni-list {
+	margin-top: 15rpx;
+	background-color: #FFFFFF;
+	margin-bottom: 30rpx;
+}
+.nav {
+	background-color: #FFFFFF;
+	height: 400rpx;
+}
+.navtext {
+	font-size: 30rpx;
+	font-weight: bold;
+}
+.price {
+	margin-right: 38rpx;
+}
+.navtitle {
+	margin-top: 10rpx;
+	height: 50rpx;
+	background-color: #FFFFFF;
+}
+.yello {
+	width: 15rpx;
+	height: 50rpx;
+	background: #e89712;
+	float: left;
+	margin-left: 32rpx;
+	margin-right: 10rpx;
+}
+.nav {
+	font-size: 35rpx;
+	font-weight: 300;
+	line-height: 50rpx;
+}
+.navtitle .price {
+	float: right;
+	color: red;
+}
+.submit{
+	width: 100%;
+	margin-top: 20rpx;
+	margin-bottom: 30rpx;
+	background-color: #e09b12;
+	color: #FFFFFF;
+}
+

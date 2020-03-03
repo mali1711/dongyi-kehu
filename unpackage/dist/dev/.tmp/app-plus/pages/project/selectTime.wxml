@@ -1,0 +1,1 @@
+<view><time-selector vue-id="1" startTime="08:00" endTime="22:00" selectedTabColor="red" selectedItemColor="#FFEC8B" data-event-opts="{{[['^selectTime',[['selectTimeEvent']]]]}}" bind:selectTime="__e" bind:__l="__l"></time-selector></view>

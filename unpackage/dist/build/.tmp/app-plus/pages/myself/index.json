@@ -1,0 +1,18 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "navigationBarBackgroundColor": "#fd5f5e",
+  "titleNView": {
+    "titleColor": "#FFFFFF",
+    "buttons": [
+      {
+        "type": "back",
+        "float": "left"
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-list": "/components/uni-list/uni-list",
+    "uni-list-item": "/components/uni-list-item/uni-list-item",
+    "q-s-image": "/components/QS-image/QS-image"
+  }
+}

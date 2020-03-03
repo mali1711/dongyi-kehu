@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/myself/index",
+    "pages/project/index",
+    "pages/myself/login",
+    "pages/myself/forgetPasswd",
+    "pages/myself/registration",
+    "pages/myself/myInfo",
+    "pages/myself/address",
+    "pages/project/projectDetails",
+    "pages/project/selectTime",
+    "pages/myself/orders",
+    "pages/project/staffList",
+    "pages/project/manageTime",
+    "pages/project/stTopro",
+    "pages/project/stToProTime",
+    "pages/myself/editpasswd",
+    "pages/myself/orderDetail",
+    "pages/myself/Recharge"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "董亿"
+  },
+  "tabBar": {
+    "color": "#555555",
+    "selectedColor": "#eba536",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/index.png",
+        "selectedIconPath": "static/indexActive.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/project/index",
+        "text": "项目",
+        "iconPath": "static/project.png",
+        "selectedIconPath": "static/projectActive.png"
+      },
+      {
+        "pagePath": "pages/myself/index",
+        "text": "我的",
+        "iconPath": "static/my.png",
+        "selectedIconPath": "static/myActive.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

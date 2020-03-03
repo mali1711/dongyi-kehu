@@ -1,0 +1,57 @@
+
+.content{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	background: #F1F1F1;
+}
+.userlist{
+	width: 98%;
+	margin-top: 3rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	background-color: #FFFFFF;
+	margin-left: 1%;
+}
+.userlist ._p{
+	font-size: 25rpx;
+	line-height: 35rpx;
+}
+.userinfo{
+	padding-top: 20rpx;
+}
+.userinfo .desc{
+	width: 500rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+.userheadimg{
+	margin-left: 10rpx;
+	width: 240rpx;
+	height: 240rpx;
+	margin-right: 10rpx;
+	padding-top: 10rpx;
+	padding-left: 10rpx;
+}
+.distance text{
+	color: red;
+}
+.orderQuantity{
+	color: red;
+	float: right;
+	margin-top: 30rpx;
+	margin-right: 20rpx;
+}
+

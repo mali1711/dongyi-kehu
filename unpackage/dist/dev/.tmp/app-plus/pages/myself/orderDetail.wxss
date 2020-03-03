@@ -1,0 +1,106 @@
+
+.jiagouxinxi{
+	float: right;
+	margin-bottom: 20rpx;
+}
+.content {}
+.address {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	/* 相对父元素水平居中 */
+	font-size: 30rpx;
+	height: 260rpx;
+	color: #FFFFFF;
+	background-color: #fd5e5e;
+	text-align: center;
+}
+.address-content {
+	margin-top: 30rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	border-bottom: 1rpx solid #DDDDDD;
+}
+.projectImg {
+	height: 200rpx;
+	width: 200rpx;
+}
+.address-content-desc {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	margin-left: 20rpx;
+	margin-top: 30rpx;
+}
+.prname {
+	font-size: 30rpx;
+	color: #414141;
+	width: 500rpx;
+	height: 100rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.protitle {
+	float: left;
+}
+.proname {
+	float: right;
+}
+.sunui {
+	padding: 4%;
+}
+.sunui-title {
+	margin: 0;
+	margin-bottom: 4%;
+	font-weight: 400;
+	font-size: 14px;
+	color: rgba(69, 90, 100, 0.6);
+	padding: 20px 15px 15px;
+	border-bottom: 1rpx solid #eee;
+}
+.sunui>.sunui-title {
+	margin-bottom: 2%;
+}
+.jiagou-border {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.jiagou {
+	width: 160rpx;
+	height: 70rpx;
+	line-height: 70rpx;
+	margin-left: 320rpx;
+}
+

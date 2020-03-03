@@ -1,0 +1,110 @@
+
+.staffList{
+	margin-top: 50rpx;
+}
+.staffList image{
+	width: 150rpx;
+	height: 150rpx;
+}
+uni-list-item{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient:horizontal;
+	-webkit-box-direction:normal;
+	-webkit-flex-direction:row;
+	        flex-direction:row;
+}
+.staffDesc{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient:vertical;
+	-webkit-box-direction:normal;
+	-webkit-flex-direction:column;
+	        flex-direction:column;
+	float: left;
+	height: 150rpx;
+	width: 480rpx;
+	font-size: 25rpx;
+	margin-left: 170rpx;
+	margin-top: -150rpx;
+	line-height: 37.5rpx;
+	color: #404040;
+}
+.screen{
+	float: left;
+	margin-top: 10rpx;
+	width: 80rpx;
+	height: 30rpx;
+	background: #DDDDDD;
+	margin-left: 140rpx;
+	font-size: 25rpx;
+	line-height: 30rpx;
+}
+.active{
+	line-height: 30rpx;
+	color: red;
+	border: 1rpx red solid;
+}
+.no{
+	line-height: 30rpx;
+	color: red;
+	border: 1rpx red solid;
+}
+.yes{
+	line-height: 30rpx;
+	color: green;
+	border: 1rpx green solid;
+}
+.sborder{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	background-color: ;
+}
+.sliver{
+	background: #e89712;
+	height: 40rpx;
+	width: 13rpx;
+	margin-left: 8rpx;
+	margin-right: 6rpx;
+}
+.banner image{
+	width: 750rpx;
+	height: 350rpx;
+}
+.nav{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-align-content: space-between;
+	        align-content: space-between;
+	margin-left: 20rpx;
+}
+.logo{
+	height: 80rpx;
+	width: 100rpx;
+	float: left;
+}
+.search{
+	border-radius: 30rpx;
+	border:1px solid #DDDDDD;
+	width: 500rpx;
+	height: 60rpx;
+	background: #DDDDDD;
+	margin-left: 0rpx;
+	margin-right: 20rpx;
+}
+.search input{
+	height: 60rpx;
+	padding-left: 20px;
+}
+.msg{
+	height: 60rpx;
+	width: 45rpx;
+	float: right;
+}
+

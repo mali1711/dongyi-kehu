@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "余额充值",
+  "usingComponents": {
+    "uni-nav-bar": "/components/uni-badge/uni-badge"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "项目列表",
+  "usingComponents": {
+    "vrow": "/components/lml-layout/row",
+    "vcol": "/components/lml-layout/col"
+  }
+}

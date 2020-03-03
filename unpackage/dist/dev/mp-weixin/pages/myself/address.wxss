@@ -1,0 +1,33 @@
+
+.content{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	width: 750rpx;
+}
+.uni-list{
+	margin-top: 40rpx;
+	width: 100%;
+}
+.uni-list-item ._p{
+	text-align: right;
+	font-size: 25rpx;
+	margin-bottom: -38rpx;
+	margin-top: 0rpx;
+	line-height: 60rpx;
+}
+input{
+	text-align: right;
+	font-size: 26rpx;
+	width: 66%;
+	padding-left: 22%;
+	position: absolute;
+}
+.submit{
+	width: 710rpx;
+}
+
