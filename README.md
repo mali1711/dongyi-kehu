@@ -1,2 +1,5 @@
-# dongyi-Customer
-# dongyi-kehu
+### dongyi-kehu
+
+### 功能说明
+
+1.支付方式，变成直接支付和余额支付两种方式
