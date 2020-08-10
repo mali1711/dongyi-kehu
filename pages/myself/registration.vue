@@ -1,18 +1,18 @@
 <template>
 	<view class="content">
 		<view class="logo">
-			<image src="../../static/login-registration/logo.png" mode=""></image>
+			<image src="../../static/logo.png" mode=""></image>
 		</view>
 		
 		<view class="uni-form-item uni-column">
-			<input type="tel" class="uni-input" name="" placeholder="请输入手机号" v-model="mobile" />
+			<input type="tel"  name="" placeholder="请输入手机号" v-model="mobile" />
 		</view>
 		<view class="uni-form-item uni-column column-with-btn">
-			<input v-model="inputcode" type="number" class="uni-input" name="" placeholder="请输入验证码" />
+			<input v-model="inputcode" type="number"  name="" placeholder="请输入验证码" />
 			<button :class="{active : !disableCodeBtn}" :disabled="disableCodeBtn" @tap="sendCode">{{codeBtn.text}}</button>
-		</view>
+		</view> 
 		<view class="uni-form-item uni-column">
-			<input v-model="passwd" type="password" class="uni-input" name="" placeholder="请输入密码" />
+			<input v-model="passwd" type="password" name="" placeholder="请输入密码" />
 		</view>
 		<button @click="regis" type="primary">注册</button>
 		<view class="links">已有账号？<view class="link-highlight" @tap="gotoLogin">点此登陆</view>

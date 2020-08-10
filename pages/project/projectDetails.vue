@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="nav">
 			<view class="banner">
-				<image src="../../static/jishiye2banner.png" mode="aspectFill"></image>
+				<image :src="projectpic" mode="aspectFill"></image>
 				<view class="navtitle">
 					<view class="yello"></view>
 					<text class="navtext">{{data.title}}</text>
@@ -17,7 +17,7 @@
 			</uni-list-item>
 			</navigator>
 			<navigator :url="'/pages/project/staffList?pr_id='+data.pr_id">
-			<uni-list-item :title="stname">
+			<uni-list-item :title=stname>
 				<p class="list-text">{{subscribetime}}</p>
 			</uni-list-item>
 			</navigator>
@@ -78,21 +78,30 @@
 				selectUser:false,
 				stname:'请选择技师',
 				address:'请选择地址',
+				projectpic:'',
 				name:''
 			}
 			},
 		onLoad(options) {
-			this.stname = options.stname;
+			this.checkLogin()
+			if(options.stname!=undefined){
+				this.stname = options.stname;
+			}
+			if(options.subscribetime!=undefined){
+				this.subscribetime = options.subscribetime;
+			}
 			this.st_id = options.st_id;
 			this.pic_1 = options.pic_1;
 			this.pr_id = options.pr_id;
-			this.subscribetime = options.subscribetime;
 			let pr_id = options.pr_id;
+			console.log(this.stname);
 			uni.request({
-				url:"https://dongyi.sir6.cn/api/project/"+pr_id,
+				url:this.apiServer+"/api/project/"+pr_id,
 				method:'GET',
 				success: (res) => {
 					this.data = res.data;
+					this.projectpic =  this.apiServer+'/uploads/'+res.data.photo
+					console.log(this.projectpic)
 				}
 			});
 			var t = this;
@@ -102,14 +111,12 @@
 					method: 'GET',
 					success: res => {
 						var data = res.data;
-
 						if(data.err==1){
-							uni.showModal({
+ /* 						uni.showModal({
 								title:'错误提示',
 								content:'请完善您的服务地址',
 								showCancel:false
-								
-							});
+							}); */
 						}else{
 							t.address = data.data.address;
 							t.name = data.data.name;
@@ -120,6 +127,7 @@
 					},
 				});
 			},2500)
+			
 		},
 		onShow() {
 			this.myaddress();
@@ -134,7 +142,7 @@
 					});
 				}else{
 					uni.request({
-						url:"https://dongyi.sir6.cn/api/order/save",
+						url:this.apiServer+"/api/order/save",
 						data:{
 							st_id:this.st_id,
 							pr_id:this.pr_id,

@@ -90,7 +90,8 @@
 .addtime-title{
 	background: #2a7cf9;
 	color: #F1F1F1;
-	border-radius: 15rpx;
+	-webkit-border-radius: 15rpx;
+	        border-radius: 15rpx;
 	text-align: center;
 	height: 40rpx;
 	font-size: 30rpx;

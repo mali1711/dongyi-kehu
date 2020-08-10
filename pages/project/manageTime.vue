@@ -5,7 +5,7 @@
 				<text @click="gettime(item,index)" class="dateblock" :class="[activedate==index ? 'dateblockActive':'']"  v-for="(item, index) in dates" :key="index">
 					{{item}}
 				</text>
-			</view>	
+			</view>
 			<view class="timelist">
 				<view @click="subscribe(item,index)" class="timeblock"  :class="[timeblockactive==index ? 'timeblock-active' : '']" v-for="(item, index) in times" :key="index">
 					<view class="timeblock-time">{{item}}:00</view>
@@ -46,18 +46,30 @@
 			this.nowdate = ("0" + (date.getMonth() + 1)).slice(-2)+'-'+day;
 			this.nowtime = date.getHours('chinese', { hour12: false })+1;
 			this.subscribetime = this.nowdate+' '+this.nowtime+':00';
-			console.log(this.subscribetime);
+			//console.log(this.subscribetime);
 			this.staffid=options.st_id;//获取技师id
 			this.pic_1=options.pic_1;//获取技师id
 			this.pr_id = options.pr_id;
 			this.stname = options.stname;
 			uni.request({
-				url:"https://dongyi.sir6.cn/api/manageTime/Initial",
+					url:this.apiServer+"/api/manageTime/Initial",
+					method:"GET",
+					success: (res) => {
+						console.log(res);
+						this.dates = res.data.date;
+				
+					}
+				})
+				// 初始化第一次选择的时间
+			uni.request({
+				url:this.apiServer+"/api/manageTime/clickTime",
 				method:"GET",
+				data: {
+					date:this.nowdate,
+					st_id:this.staffid
+				},
 				success: (res) => {
-					this.dates = res.data.date;
-					this.times = res.data.time;
-	
+					this.times = res.data;
 				}
 			})
 		},
@@ -67,12 +79,17 @@
 				this.activedate = index;
 				console.log(index);
 				uni.request({
-					url:"https://dongyi.sir6.cn/api/manageTime/clickTime?date="+date,
+					url:this.apiServer+"/api/manageTime/clickTime",
 					method:"GET",
+					data: {
+						date:date,
+						st_id:this.staffid
+					},
 					success: (res) => {
 						this.times = res.data;
 					}
 				})
+				
 			},
 			subscribe:function(time,index){
 				this.timeblockactive = index;

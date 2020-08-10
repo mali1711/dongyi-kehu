@@ -31,9 +31,9 @@
   text-align: center;
 }
 .logo image.data-v-61c5a2dc {
-    height: 200rpx;
-    width: 200rpx;
-    margin: 0 0 60rpx;
+  height: 200rpx;
+  width: 200rpx;
+  margin: 0 0 60rpx;
 }
 .uni-form-item.data-v-61c5a2dc {
   margin-bottom: 40rpx;
@@ -41,12 +41,13 @@
   border-bottom: 1px solid #e3e3e3;
 }
 .uni-form-item .uni-input.data-v-61c5a2dc {
-    font-size: 30rpx;
-    padding: 7px 0;
+  font-size: 30rpx;
+  padding: 7px 0;
 }
 button[type="primary"].data-v-61c5a2dc {
   background-color: #fd5f5e;
-  border-radius: 0;
+  -webkit-border-radius: 0;
+          border-radius: 0;
   font-size: 34rpx;
   margin-top: 60rpx;
 }
@@ -57,11 +58,11 @@ button[type="primary"].data-v-61c5a2dc {
   color: #999;
 }
 .links view.data-v-61c5a2dc {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 10rpx;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 10rpx;
 }
 .links .link-highlight.data-v-61c5a2dc {
-    color: #fd5f5e;
+  color: #fd5f5e;
 }
 

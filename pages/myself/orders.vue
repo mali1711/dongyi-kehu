@@ -4,7 +4,9 @@
 			<navigator :url="'orderDetail?order_id='+item.order_id">
 				<view class="head">
 					<text class="addtime"><text class="addtime-title">&nbsp; 时间 </text>：{{item.create_time}}</text> 
-					<text class="status">等待接单</text>
+					<text v-if="item.status==0" class="status" style="color: #00C777;">新订单</text>
+					<text v-if="item.status==1" class="status" style="color: #CE3C39;">进行中</text>
+					<text v-if="item.status==2" class="status" style="color: #ADADAD;">已完成</text>
 				</view>
 				<hr>
 				<view class="body">
@@ -19,7 +21,7 @@
 						</view>
 						<view class="xiangmu">
 							<text class="xiangmuMing">全身SPA x1</text>
-							<text class="zongJiaGe">{{item.add_purchase_price}}¥</text>
+							<text class="zongJiaGe">{{item.total_price}}¥</text>
 						</view>
 				</view>
 			</navigator>

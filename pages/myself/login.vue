@@ -5,10 +5,10 @@
 				<image src="../../static/logo.png" mode=""></image>
 			</view>
 			<view class="uni-form-item uni-column">
-				<input type="tel" class="uni-input" name="mobile" placeholder="请输入手机号" />
+				<input type="tel"  name="mobile" placeholder="请输入手机号" />
 			</view>
 			<view class="uni-form-item uni-column">
-				<input type="password" class="uni-input" name="passwd" placeholder="请输入密码" />
+				<input type="password" name="passwd" placeholder="请输入密码" />
 			</view>
 			<button type="primary" form-type="submit">登陆</button>
 			<view class="links">
@@ -25,7 +25,7 @@
 			return {}
 		},
 		onLoad(options) {
-			console.log(options)
+			
 		},
 		methods: {
 			gotoRegistration: function() {
@@ -42,7 +42,7 @@
 				console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
 				var formdata = e.detail.value
 				uni.request({
-					url: "https://dongyi.sir6.cn/api/login/login",
+					url: this.apiServer+"/api/login/login",
 					data: JSON.stringify(formdata),
 					method:'POST',
 					success: (res) => {
@@ -66,6 +66,9 @@
 					}
 				})
 			},
+			formReset:function(e){
+				
+			}
 		}
 	}
 </script>

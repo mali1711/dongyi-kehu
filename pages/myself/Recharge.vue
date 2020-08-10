@@ -4,7 +4,7 @@
 		<view class="money-border">
 			<button class="rec" v-for="(itme,index) in money" :key="index" @click="cl(itme)" type="primary" plain="true" hover-stay-time="700">{{itme}}</button>
 		</view>
-		<button class="rech" type="warn">确认充值</button>
+		<button class="rech" type="warn" @click="requestPayment(m)">确认充值</button>
 	</view>
 </template>
 
@@ -12,16 +12,76 @@
 	import uniNavBar from "../../components/uni-badge/uni-badge.vue"
 	export default {
 		components: {uniNavBar},
+		onLoad() {
+			this.checkLogin();
+		},
 		data() {
 			return {
-				money:[200,300,500,1000,1500,2000],
-				m:200
+				money:[100,300,500,1000,1500,2000],
+				m:500
 			}
 		},
 		methods: {
 			cl(e){
 				this.m = e;
-			}
+			},
+			async requestPayment() {
+			    let orderInfo = await this.getOrderInfo(this.m);
+			    console.log("得到订单信息", orderInfo);
+			    if (orderInfo.statusCode !== 200) {
+			        console.log("获得订单信息失败", orderInfo);
+			        uni.showModal({
+			            content: "获得订单信息失败",
+			            showCancel: false
+			        })
+			        return;
+			    }
+			    uni.requestPayment({
+			        provider: 'alipay',
+			        orderInfo: orderInfo.data,
+			        success: (e) => {
+			            console.log("success", e);
+			            uni.showToast({
+			                title: "支付成功"
+			            })
+			        },
+			        fail: (e) => {
+			            console.log("fail", e);
+			            uni.showModal({
+			                content: "支付失败",//+ e.errMsg,
+			                showCancel: false
+			            })
+			        },
+					complete: () => {
+                        console.log("payment结束")
+                        this.loading = false;
+                    }
+			    })
+			},
+			getOrderInfo(m) {
+				var user_id = uni.getStorageSync('USERID');
+			    let appid = "";
+			    // #ifdef APP-PLUS
+			    appid = plus.runtime.appid;
+			    // #endif
+			    let url = this.apiServer+'/api/Api/pay';
+			    return new Promise((res) => {
+			        uni.request({
+			            url: url,
+						data:{
+							user_id:user_id,
+							total:m
+						},
+			            success: (result) => {
+			                res(result);
+			            },
+			            fail: (e) => {
+			                res(e);
+			            }
+			        })
+			    })
+			},
+			
 		}
 	}
 </script>

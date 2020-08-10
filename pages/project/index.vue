@@ -7,22 +7,22 @@
 		</swiper>
 		<view class="projectList">
 
-				<view class="projecttitle" v-for="(item,index) in projectList" :key='index'>
-					<navigator
-					:url="'/pages/project/projectDetails?pr_id='+item.pr_id">
-					<vrow class="row" >
-						<vcol span="30"><view class="col">
-							<image :src="item.photo" class="projectImg" mode="aspectFill"></image>
-						</view>
+			<view class="projecttitle" v-for="(item,index) in projectList" :key='index'>
+				<navigator :url="'/pages/project/projectDetails?pr_id='+item.pr_id">
+					<vrow class="row">
+						<vcol span="30">
+							<view class="col">
+								<image :src="item.photo" class="projectImg" mode="aspectFill"></image>
+							</view>
 						</vcol>
 						<vcol class="desc" span="70">
 							<h5>{{item.title}}</h5>
 							<text><b>简介:</b>{{item.desc}}</text>
-							<text class="price"><b>价格：</b><span>120/次</span></text>
+							<text class="price"><b>价格：</b><span>{{item.price}}/次</span></text>
 						</vcol>
 					</vrow>
-						</navigator>
-				</view>
+				</navigator>
+			</view>
 		</view>
 	</view>
 	</view>
@@ -33,12 +33,13 @@
 	import vcol from '../../components/lml-layout/col.vue'
 	export default {
 		components: {
-		    vrow,vcol
+			vrow,
+			vcol
 		},
 		data() {
 			return {
 				title: '你好董亿',
-				projectList:[],
+				projectList: [],
 			}
 		},
 		onLoad() {
@@ -48,31 +49,33 @@
 			console.log(this.title)
 		},
 		methods: {
-			getData(){
+			getData() {
 				var tt = this
 				uni.request({
-					url:'https://dongyi.sir6.cn/api/project/',
-					method:'GET',
+					url: this.apiServer+'/api/project/',
+					method: 'GET',
 					success(res) {
 						tt.projectList = res.data.data
 						console.log(res);
 					}
 				})
 			},
-			
+
 		}
 	}
 </script>
 <style>
-	.projecttitle{
+	.projecttitle {
 		margin-top: 10rpx;
 		background-color: #f9f9f9;
 	}
-	.desc{
+
+	.desc {
 		display: flex;
 		flex-direction: column;
 	}
-	.desc text{
+
+	.desc text {
 		font-size: 25rpx;
 		color: #404040;
 		display: -webkit-box;
@@ -80,29 +83,36 @@
 		-webkit-line-clamp: 5;
 		overflow: hidden;
 	}
-	.price{
+
+	.price {
 		text-align: right;
 	}
-	.price span{
+
+	.price span {
 		font-size: 30rpx;
 		color: red;
 	}
-	.projectImg{
+
+	.projectImg {
 		width: 200rpx;
 		height: 200rpx;
 	}
-	.projecttitle{
+
+	.projecttitle {
 		display: flex;
-		
+
 	}
-	page{
+
+	page {
 		background-color: #F1F1F1;
 	}
-	swiper-item{
+
+	swiper-item {
 		height: 500rpx;
 		width: 100%;
 	}
-	swiper-item image{
+
+	swiper-item image {
 		width: 730rpx;
 		height: 300rpx;
 	}

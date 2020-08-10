@@ -2,14 +2,14 @@
 	<view class="content">
 		<view v-if="!changeSuccess">
 			<view class="uni-form-item uni-column">
-				<input type="tel" class="uni-input" name="" placeholder="请输入手机号"  v-model="mobile" />
+				<input type="tel"  name="" placeholder="请输入手机号"  v-model="mobile" />
 			</view>
 			<view class="uni-form-item uni-column column-with-btn">
-				<input  type="number" class="uni-input" name="" placeholder="请输入验证码" v-model="inputcode" />
+				<input  type="number"  name="" placeholder="请输入验证码" v-model="inputcode" />
 				<button :class="{active : !disableCodeBtn}" :disabled="disableCodeBtn" @tap="sendCode">{{codeBtn.text}}</button>
 			</view>
 			<view class="uni-form-item uni-column">
-				<input type="password" class="uni-input" name="" placeholder="请输入新密码" v-model="passwd" />
+				<input type="password"  name="" placeholder="请输入新密码" v-model="passwd" />
 			</view>
 			<button type="primary" @click="forgetsubmit">提交</button>
 		</view>
@@ -29,6 +29,7 @@
 				seconds: 120,
 				inputcode:'',//用户输入的验证码
 				code: '',//接口返回的验证码
+				passwd:'',
 				codeBtn: {
 					text: '获取验证码',
 					waitingCode: false,

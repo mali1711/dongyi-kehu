@@ -43,7 +43,7 @@
 			}
 		},
 		onLoad() {
-
+		this.checkLogin()
 		},
 		methods: {
 

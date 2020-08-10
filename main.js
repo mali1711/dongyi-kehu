@@ -2,16 +2,16 @@ import Vue from 'vue'
 import App from './App'
 
 Vue.config.productionTip = false;
+//获取地理位置
+uni.getLocation({
+	type:'gcj02',
+	altitude:true,
+	success(res) {
+		uni.setStorageSync('LATITUDE',res.latitude);
+		uni.setStorageSync('LONGITUDE',res.longitude);
+	}
+})
 Vue.prototype.checkLogin = function(backpage='',backtype=''){
-	//获取地理位置
-	uni.getLocation({
-		type:'wgs84',
-		altitude:true,
-		success(res) {
-			uni.setStorageSync('LATITUDE',res.latitude);
-			uni.setStorageSync('LONGITUDE',res.longitude);
-		}
-	})
 	var USERID = uni.getStorageSync('USERID');
 	var USERNAME = uni.getStorageSync('USERNAME');
 	var MOBILE = uni.getStorageSync('MOBILE');

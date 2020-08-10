@@ -1,6 +1,10 @@
 <template>
 	<view class="content">
-
+		<swiper indicator-dots="true" autoplay="true">
+			<swiper-item>
+				<image src="../../static/projectSwiper.png" mode="aspectFit"></image>
+			</swiper-item>
+		</swiper>
 		<view class="projectList">
 				<view class="projecttitle" v-for="(item,index) in projectList" :key='index'>
 					<navigator
@@ -13,7 +17,7 @@
 						<vcol class="desc" span="70">
 							<h5>{{item.title}}</h5>
 							<text><b>简介:</b>{{item.desc}}</text>
-							<text class="price"><b>价格：</b><span>120/次</span></text>
+							<text class="price"><b>价格：</b><span>{{item.price}}/次</span></text>
 						</vcol>
 					</vrow>
 							</navigator>
@@ -58,7 +62,7 @@
 			getData(){
 				var tt = this
 				uni.request({
-					url:'https://dongyi.sir6.cn/api/project/',
+					url:this.apiServer+'/api/project/',
 					method:'GET',
 					success(res) {
 						tt.projectList = res.data.data

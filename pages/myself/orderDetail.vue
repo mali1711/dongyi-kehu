@@ -38,11 +38,12 @@
 		</view> -->
 		<view class="sunui">
 			<view class="sunui-title">加价简介：最急最低加价数量2，单价¥50，每次加价20分钟,<text>当前已经加购数量{{totalnum}}个</text></view>
-			<view class="jiagou-border">
+			<view class="jiagou-border" v-if="detailinfo.status!=2">
 				<sunui-stepper unactive="#ddd" active="#19A15F" :label='0' :val="2" :max="10" :min="2" :step="2" @change="stepper"></sunui-stepper>
 				<button class="jiagou" @click="jiagou()" type="warn">加购</button>
 			</view>
 		</view>
+		<button v-if="detailinfo.status==1" @click="complete()" type="primary">确认完成</button>
 	</view>
 </template>
 
@@ -61,9 +62,10 @@
 			}
 		},
 		onLoad(options) {
+			this.checkLogin();
 			this.srcPath = this.apiServer;
 			uni.request({
-				url:'https://dongyi.sir6.cn/api/order/detail?order_id='+options.order_id,
+				url:this.apiServer+'/api/order/detail?order_id='+options.order_id,
 				method:'GET',
 				success: (res) => {
 					this.detailinfo = res.data;
@@ -81,7 +83,7 @@
 				console.log(this.detailinfo.order_id);
 				console.log(this.add_purchase_num);
 				uni.request({
-					url: 'https://dongyi.sir6.cn/api/order/jiagou',
+					url: this.apiServer+'/api/order/jiagou',
 					method: 'POST',
 					data: {
 						order_id:this.detailinfo.order_id,
@@ -100,6 +102,32 @@
 						}else{
 							uni.showToast({
 							    title: '余额 不足',
+							    duration: 2000
+							});
+						}
+					}
+				});
+			},
+			complete(){ //确认完成订单
+			console.log(this.detailinfo.order_id);
+				uni.request({
+					url: this.apiServer+'/api/order/complete',
+					method: 'get',
+					data: {
+						order_id:this.detailinfo.order_id
+					},
+					success: res => {
+						var result = res.data;
+						console.log(result);
+						if(result.err==0){
+							uni.showToast({
+							    title: '订单已经完成',
+							    duration: 2000
+							});
+							this.totalnum = result.add_purchase_num;
+						}else{
+							uni.showToast({
+							    title: '操作有误，请联系客服',
 							    duration: 2000
 							});
 						}

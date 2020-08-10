@@ -33,16 +33,16 @@
           align-items: center;
 }
 .sunui-stepper view {
-    display: inline-block;
-    font-size: 1.5em;
-    font-weight: bold;
-    line-height: 1em;
-    padding: 4rpx 10rpx;
-    border: 1rpx solid #eee;
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1em;
+  padding: 4rpx 10rpx;
+  border: 1rpx solid #eee;
 }
 .sunui-stepper input {
-    width: 100rpx;
-    text-align: center;
-    background-color: #eee;
+  width: 100rpx;
+  text-align: center;
+  background-color: #eee;
 }
 

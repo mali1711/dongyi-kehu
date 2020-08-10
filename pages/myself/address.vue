@@ -1,18 +1,22 @@
 <template>
 	<view class="content">
-		<form @submit="formSubmit" @reset="formReset">
+		<form @submit="formSubmit">
 		<!-- 一般用法 -->
 		<input class="address" hidden="true"  name="longitude" type="text" :value="longitude" />
 		<input class="address" hidden="true" name="latitude" type="text" :value="latitude" />
 		<uni-list>
-		    <uni-list-item title="服务地址">
-				<input class="address" name="address" type="text" :value="address" />
+
+		    <uni-list-item title="预约人:">
+				<input class="name" name="name" type="text" placeholder="服务人" :value="name" />
 			</uni-list-item>
-		    <uni-list-item title="姓名">
-				<input class="name" name="name" type="text" :value="name" />
+			<uni-list-item title="所在地区:">
+				<input class="address" name="address" type="text" placeholder="服务器地区" :value="myAddress" />
 			</uni-list-item>
-		    <uni-list-item title="联系电话" :show-badge="true">
-				<input class="mobile" name="mobile" type="text" :value="mobile" />
+			<uni-list-item title="详情地址:">
+				<input class="detailed" name="detailed"  type="text" placeholder="请精确到门牌号" :value="detailed" />
+			</uni-list-item>
+		    <uni-list-item title="联系电话:" :show-badge="true">
+				<input class="mobile" name="mobile" type="text" placeholder="手机号" :value="mobile" />
 			</uni-list-item>
 		</uni-list>
 		
@@ -29,9 +33,10 @@
 		components: {uniList,uniListItem},
 		data() {
 			return {
-				address:'',
-				mobile:'',
-				name:'',
+				myAddress:'',	//地址
+				detailed:'',	//地址详情
+				mobile:'',		//手机号
+				name:'',		//姓名
 				USERINFO:[],
 				latitude:'',
 				longitude:''
@@ -49,12 +54,11 @@
 		},
 		methods: {
 			formSubmit:function(e){
-				console.log(e.detail.value.user_id = uni.getStorageSync('USERID'));
-				console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
+				e.detail.value.user_id = uni.getStorageSync('USERID')
+				 console.log(e.detail.value.user_id);
 				var formdata = e.detail.value;
-				console.log(formdata);
 				uni.request({
-					url:"https://dongyi.sir6.cn/api/address/save",
+					url:this.apiServer+"/api/address/save",
 					method:'POST',
 					data:JSON.stringify(formdata),
 					success: (res) => {
@@ -78,13 +82,13 @@
 				    delta: 1,
 				});
 			},
+
 			initAddress:function(){
 				uni.request({
 					url: this.apiServer+'/api/address/index?user_id='+uni.getStorageSync('USERID'),
 					method: 'GET',
 					success: res => {
 						var data = res.data;
-						console.log(data.err);
 						if(data.err==1){
 							uni.showModal({
 								title:'错误提示',
@@ -93,9 +97,11 @@
 								
 							});
 						}else{
-							this.address = data.data.address;
+							console.log(data.data)
+							this.myAddress = data.data.address;
 							this.name = data.data.name;
 							this.mobile = data.data.mobile;
+							this.detailed = data.data.detailed;
 						}
 					},
 				});
@@ -103,9 +109,8 @@
 			
 			doLocation:function(){
 				var tt = this
-				uni.chooseLocation({
+				uni.getLocation({
 				    success: function (res) {
-				        console.log(res)
 						tt.address = res.address + res.name;
 						tt.latitude = res.latitude;
 						tt.longitude = res.longitude;
@@ -117,6 +122,20 @@
 </script>
 
 <style>
+	input::placeholder {
+	    /* placeholder颜色  */
+	    color: #bb4532;
+	    /* placeholder字体大小  */
+	    font-size: 12rpx;
+	    /* placeholder位置  */
+	    text-align: right;
+	}
+	.uni-list-item input{
+		text-align: left;
+		width: 400rpx;
+		margin-left: 50rpx;
+		font-weight: bold;
+	}
 	.content{
 		display: flex;
 		flex-direction: column;

@@ -51,14 +51,26 @@
 			this.pic_1=options.pic_1;//获取技师id
 			this.pr_id = options.pr_id;
 			this.stname = options.stname;
+			// 初始化第一次选择的日期
 			uni.request({
-				url:"https://dongyi.sir6.cn/api/manageTime/Initial",
+				url:this.apiServer+"/api/manageTime/Initial",
 				method:"GET",
 				success: (res) => {
 					console.log(res);
 					this.dates = res.data.date;
-					this.times = res.data.time;
 	
+				}
+			})
+			// 初始化第一次选择的时间
+			uni.request({
+				url:this.apiServer+"/api/manageTime/clickTime",
+				method:"GET",
+				data: {
+					date:this.nowdate,
+					st_id:this.staffid
+				},
+				success: (res) => {
+					this.times = res.data;
 				}
 			})
 		},
@@ -68,8 +80,12 @@
 				this.activedate = index;
 				console.log(index);
 				uni.request({
-					url:"https://dongyi.sir6.cn/api/manageTime/clickTime?date="+date,
+					url:this.apiServer+"/api/manageTime/clickTime",
 					method:"GET",
+					data: {
+						date:date,
+						st_id:this.staffid
+					},
 					success: (res) => {
 						this.times = res.data;
 					}

@@ -1,4 +1,26 @@
 
+input::-webkit-input-placeholder {
+    /* placeholder颜色  */
+    color: #bb4532;
+    /* placeholder字体大小  */
+    font-size: 12rpx;
+    /* placeholder位置  */
+    text-align: right;
+}
+input::placeholder {
+    /* placeholder颜色  */
+    color: #bb4532;
+    /* placeholder字体大小  */
+    font-size: 12rpx;
+    /* placeholder位置  */
+    text-align: right;
+}
+.uni-list-item input{
+	text-align: left;
+	width: 400rpx;
+	margin-left: 50rpx;
+	font-weight: bold;
+}
 .content{
 	display: -webkit-box;
 	display: -webkit-flex;

@@ -1,58 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-    <head>
-        <meta charset="UTF-8" />
-        <script>
-            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
-                CSS.supports('top: constant(a)'))
-            document.write(
-                '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
-                (coverSupport ? ', viewport-fit=cover' : '') + '" />')
-        </script>
-        <title>View</title>
-        <style>
-            * {
-                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-                -webkit-tap-highlight-color: transparent;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      var __UniViewStartTime__ = Date.now();
+      document.addEventListener('DOMContentLoaded', function() {
+          document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px'
+      })
+      var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+        CSS.supports('top: constant(a)'))
+      document.write(
+        '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+        (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+    </script>
+    <title>View</title>
+    <link rel="stylesheet" href="view.css" />
+  </head>
 
-            input[type="search"]::-webkit-search-cancel-button {
-                display: none;
-            }
-        </style>
-        <script>
-            var __wxConfig = {"debug":false,"appname":"董亿","entryPagePath":"pages/index/index.html","page":{"pages/index/index.html":{"window":{"navigationBarTitleText":"董亿在线上门服务","enablePullDownRefresh":true,"softinputNavBar":"none","usingComponents":{"uni-list":"/components/uni-list/uni-list","uni-list-item":"/components/uni-list-item/uni-list-item","helang-highlight":"/components/helang-highlight/helang-highlight"}}},"pages/myself/index.html":{"window":{"navigationBarTitleText":"个人中心","navigationBarBackgroundColor":"#fd5f5e","titleNView":{"titleColor":"#FFFFFF","buttons":[{"type":"back","float":"left"}]},"usingComponents":{"uni-list":"/components/uni-list/uni-list","uni-list-item":"/components/uni-list-item/uni-list-item","q-s-image":"/components/QS-image/QS-image"}}},"pages/project/index.html":{"window":{"navigationBarTitleText":"项目列表","usingComponents":{"vrow":"/components/lml-layout/row","vcol":"/components/lml-layout/col"}}},"pages/myself/login.html":{"window":{"navigationBarTitleText":"登陆","usingComponents":{}}},"pages/myself/forgetPasswd.html":{"window":{"usingComponents":{}}},"pages/myself/registration.html":{"window":{"usingComponents":{}}},"pages/myself/myInfo.html":{"window":{"navigationBarTitleText":"个人中心","navigationBarBackgroundColor":"#fd5f5e","titleNView":{"titleColor":"#FFFFFF"},"usingComponents":{"uni-list":"/components/uni-list/uni-list","uni-list-item":"/components/uni-list-item/uni-list-item"}}},"pages/myself/address.html":{"window":{"usingComponents":{"uni-list":"/components/uni-list/uni-list","uni-list-item":"/components/uni-list-item/uni-list-item"}}},"pages/project/projectDetails.html":{"window":{"usingComponents":{"uni-list":"/components/uni-list/uni-list","uni-list-item":"/components/uni-list-item/uni-list-item"}}},"pages/project/selectTime.html":{"window":{"usingComponents":{"time-selector":"/components/xiujun-time-selector/index"}}},"pages/myself/orders.html":{"window":{"usingComponents":{}}},"pages/project/staffList.html":{"window":{"navigationBarTitleText":"技师列表","usingComponents":{"uni-nav-bar":"/components/uni-badge/uni-badge"}}},"pages/project/manageTime.html":{"window":{"usingComponents":{}}},"pages/project/stTopro.html":{"window":{"navigationBarTitleText":"项目列表","usingComponents":{"vrow":"/components/lml-layout/row","vcol":"/components/lml-layout/col"}}},"pages/project/stToProTime.html":{"window":{"navigationBarTitleText":"","usingComponents":{}}},"pages/myself/editpasswd.html":{"window":{"navigationBarTitleText":"修改密码","usingComponents":{}}},"pages/myself/orderDetail.html":{"window":{"navigationBarTitleText":"订单详情","usingComponents":{"sunui-stepper":"/components/sunui-stepper/sunui-stepper"}}},"pages/myself/Recharge.html":{"window":{"navigationBarTitleText":"余额充值","usingComponents":{"uni-nav-bar":"/components/uni-badge/uni-badge"}}}},"global":{"window":{"navigationBarBackgroundColor":"#FFFFFF","navigationBarTextStyle":"black","navigationBarTitleText":"董亿"}},"tabBar":{"color":"#555555","selectedColor":"#eba536","backgroundColor":"","borderStyle":"black","list":[{"pagePath":"pages/index/index.html","iconPath":"static/index.png","selectedIconPath":"static/indexActive.png","text":"首页"},{"pagePath":"pages/project/index.html","text":"项目","iconPath":"static/project.png","selectedIconPath":"static/projectActive.png"},{"pagePath":"pages/myself/index.html","text":"我的","iconPath":"static/my.png","selectedIconPath":"static/myActive.png"}],"position":"bottom"},"networkTimeout":{"request":60000,"connectSocket":60000,"uploadFile":60000,"downloadFile":60000},"platform":"devtools","pages":["pages/index/index","pages/myself/index","pages/project/index","pages/myself/login","pages/myself/forgetPasswd","pages/myself/registration","pages/myself/myInfo","pages/myself/address","pages/project/projectDetails","pages/project/selectTime","pages/myself/orders","pages/project/staffList","pages/project/manageTime","pages/project/stTopro","pages/project/stToProTime","pages/myself/editpasswd","pages/myself/orderDetail","pages/myself/Recharge"],"nvueCompiler":"uni-app","renderer":"auto","splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"compilerVersion":"2.6.1","usingComponents":{}}
-        </script>
-        <script>
-            var __id__ = '';
-            window.__dispatchGenerateFunc__ = function(page) {
-                __id__ = page;
-                document.title = page;
-                // window.history.pushState('', '', page);
-                var wxss = page.replace('.html', '.wxss')
-                if (
-                    typeof __wxAppCode__ !== 'undefined' &&
-                    __wxAppCode__.hasOwnProperty(wxss)
-                ) {
-                    var setCssToHead = __wxAppCode__[wxss]
-                    typeof setCssToHead === 'function' && setCssToHead()
-                    document.dispatchEvent(new CustomEvent("generateFuncReady", {
-                        detail: {
-                            generateFunc: $gwx(page.replace('.html', '.wxml'))
-                        }
-                    }));
-                } else {
-                    plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
-                }
-            };
-        </script>
-        <script src="__uniappes6.js"></script>
-        <script src="uniapp://ready"></script>
-    </head>
-
-    <body>
-        <div></div>
-    </body>
+  <body>
+    <div id="app"></div>
+    <script src="__uniappes6.js"></script>
+    <script src="view.umd.min.js"></script>
+    <script src="app-view.js"></script>
+  </body>
 
 </html>

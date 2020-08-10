@@ -45,7 +45,7 @@
 				var formdata = e.detail.value;
 				console.log(formdata);
 				uni.request({
-					url:"https://dongyi.sir6.cn/api/address/save",
+					url:this.apiServer+"/api/address/save",
 					method:'POST',
 					data:JSON.stringify(formdata),
 					success: (res) => {

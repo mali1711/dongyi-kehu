@@ -17,7 +17,8 @@
     "pages/project/stToProTime",
     "pages/myself/editpasswd",
     "pages/myself/orderDetail",
-    "pages/myself/Recharge"
+    "pages/myself/Recharge",
+    "pages/index/demo"
   ],
   "subPackages": [],
   "window": {
