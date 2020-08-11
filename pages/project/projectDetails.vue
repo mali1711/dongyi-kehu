@@ -31,6 +31,7 @@
 			</navigator>
 		</uni-list>
 		<button class="submit" @click="subscribe()" size="mini">确认预约</button>
+		<button class="submit" @click="selectPay()" size="mini">确认预约</button>
 		<view class="detalis">
 			<view class="banner">
 				<view class="navtitle">
@@ -171,6 +172,23 @@
 						}
 					})
 				}
+			},
+			selectPay:function(){
+				var payInfo = {
+					st_id:this.st_id,
+					pr_id:this.pr_id,
+					subtime:this.subscribetime,
+					address: this.address,
+					address_contacts:this.name,
+					address_mobile:this.mobile,
+					longitude:this.longitude,
+					latitude:this.latitude,
+					user_id:uni.getStorageSync('USERID')
+				};
+				uni.setStorageSync('payInfo',payInfo);
+				var s = uni.getStorageSync('payInfo');
+				console.log(s);
+				console.log(payInfo);
 			},
 			myaddress(){//获取当前用户地址
 				uni.request({

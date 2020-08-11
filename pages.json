@@ -124,6 +124,12 @@
 				"navigationBarTitleText":"技师详情"
 			}
         }
+        ,{
+            "path" : "pages/project/methodPay",
+            "style" : {
+            	"navigationBarTitleText":"选择支付方式"
+            }
+        }
     ],
 	"globalStyle": {
 		"navigationBarBackgroundColor":"#FFFFFF",

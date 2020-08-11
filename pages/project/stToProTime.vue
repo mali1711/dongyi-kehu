@@ -12,12 +12,11 @@
 					<view class="timeblock-time">预约</view>
 				</view>
 			</view>
-			<navigator class="subnav" :url="'/pages/project/stTopro?st_id='+staffid+'&pic_1='+pic_1+'&pr_id='+pr_id+'&subscribetime='+subscribetime+'&stname='+stname">
+ 			<navigator class="subnav" :url="'/pages/project/stTopro?st_id='+staffid+'&pic_1='+pic_1+'&pr_id='+pr_id+'&subscribetime='+subscribetime+'&stname='+stname">
 				<button  size="mini" type="warn">
 					确认预约
 				</button>
 			</navigator>
-			
 		</view>
 	</view>
 </template>
@@ -96,6 +95,10 @@
 				this.nowtime = time;
 				this.subscribetime = this.nowdate+' '+this.nowtime+':00';
 				console.log(this.subscribetime);
+			},
+			selectPay:function(){
+				// 选择支付方式
+				console.log(12345);
 			}
 		}
 	}
