@@ -2,10 +2,7 @@
 	<view class="user">
 		<!-- 头部 -->
 		<view class="user-wrap">
-			<navigator url="/pages/project/stTopro" hover-class="other-navigator-hover">
-				<button class="appoint cu-btn round bg-yellow" >确认预约</button>
-			</navigator>
-			
+			<button class="appoint cu-btn round bg-yellow" @click="selectTime(st_id,pic_1,pr_id)">确认预约</button>
 			<view class="info">
 				<image class="avatar" mode="aspectFill" :src="userInfo.headPicUrl"></image>
 				<view class="nickname">{{ userInfo.nickName }}</view>
@@ -114,6 +111,17 @@ export default {
 					}
 				}
 			})
+		}
+		,selectTime(st_id,pic_1,pr_id,name,status,distance){
+			if(status==0){
+				uni.showToast({
+					title:'技师休息中'
+				})
+			}else{
+				uni.navigateTo({
+					url:'/pages/project/stToProTime?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name
+				})
+			}
 		}
 	},
 	data() {

@@ -112,8 +112,9 @@ export default {
 			}else{
 				uni.navigateTo({
 					//url:'/pages/project/stToProTime?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name
-					url:'/pages/project/staffDetail?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name+'&distance='+distance
-				})
+					url:'/pages/index/staffDetail?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name
+		
+					})
 			}
 		}
 		,appquit(){

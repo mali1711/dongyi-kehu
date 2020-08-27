@@ -113,11 +113,13 @@
             "style" : {
 				"navigationBarTitleText":"余额充值"
 			}
-        }
-        ,{
-            "path" : "pages/index/demo",
-            "style" : {}
-        }
+        },
+		{
+		    "path" : "pages/index/stToProTimeByStaff",
+		    "style" : {
+				"navigationBarTitleText":"选择项目"
+			}
+		}
         ,{
             "path" : "pages/project/staffDetail",
             "style" : {
@@ -130,6 +132,24 @@
             	"navigationBarTitleText":"选择支付方式"
             }
         }
+        ,{
+            "path" : "pages/index/projectDetails",
+            "style" : {}
+        },
+		{
+		    "path" : "pages/index/projectList",
+		    "style" : {}
+		},
+		{
+		    "path" : "pages/index/projectDetails",
+		    "style" : {}
+		},
+		{
+		    "path" : "pages/index/staffDetail",
+		    "style" : {
+				"navigationBarTitleText":"技师详情"
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarBackgroundColor":"#FFFFFF",
@@ -159,7 +179,7 @@
 	"condition" : { //模式配置，仅开发期间生效
 		"current": 0, //当前激活的模式(list 的索引项)
 		"list": [
-			{
+			{ 
 				/* "name": "余额充值", //模式名称
 				"path": "pages/myself/Recharge", //启动页面，必选
 				"query": "" //启动参数，在页面的onLoad函数里面得到 */

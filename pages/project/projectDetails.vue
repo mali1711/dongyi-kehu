@@ -31,7 +31,6 @@
 			</navigator>
 		</uni-list>
 		<button class="submit" @click="subscribe()" size="mini">确认预约</button>
-		<button class="submit" @click="selectPay()" size="mini">确认预约</button>
 		<view class="detalis">
 			<view class="banner">
 				<view class="navtitle">
