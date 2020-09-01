@@ -49,14 +49,12 @@
 			}
 		},
 		onLoad(options) {
+			this.product = uni.getStorageSync('PRODUCT');//获取当前选中的购买以及预算技师的信息
 			this.st_id = options.st_id;
 			this.pic_1 = options.pic_1;
 			this.subscribetime = options.subscribetime;
 			this.stname = options.stname;
 			this.getData();
-			//console.log(this.projectList)
-			console.log(this.projectList);
-			console.log(this.title)
 		},
 		methods: {
 			getData(){
@@ -66,7 +64,6 @@
 					method:'GET',
 					success(res) {
 						tt.projectList = res.data.data
-						console.log(res);
 					}
 				})
 			},

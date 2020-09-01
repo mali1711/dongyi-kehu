@@ -150,6 +150,10 @@
 				"navigationBarTitleText":"技师详情"
 			}
 		}
+        ,{
+            "path" : "pages/index/manageTime",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarBackgroundColor":"#FFFFFF",

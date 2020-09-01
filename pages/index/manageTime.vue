@@ -5,18 +5,19 @@
 				<text @click="gettime(item,index)" class="dateblock" :class="[activedate==index ? 'dateblockActive':'']"  v-for="(item, index) in dates" :key="index">
 					{{item}}
 				</text>
-			</view>	
+			</view>
 			<view class="timelist">
 				<view @click="subscribe(item,index)" class="timeblock"  :class="[timeblockactive==index ? 'timeblock-active' : '']" v-for="(item, index) in times" :key="index">
 					<view class="timeblock-time">{{item}}:00</view>
 					<view class="timeblock-time">预约</view>
 				</view>
 			</view>
- 			<navigator class="subnav" :url="'/pages/project/stTopro?st_id='+staffid+'&pic_1='+pic_1+'&pr_id='+pr_id+'&subscribetime='+subscribetime+'&stname='+stname">
+			<navigator class="subnav" :url="'/pages/index/projectDetails?st_id='+staffid+'&pic_1='+pic_1+'&pr_id='+pr_id+'&subscribetime='+subscribetime+'&stname='+stname">
 				<button  size="mini" type="warn">
 					确认预约
 				</button>
 			</navigator>
+			
 		</view>
 	</view>
 </template>
@@ -35,31 +36,33 @@
 				staffid:0,//预定的技师ID
 				pic_1:'',//预定技师的头像
 				pr_id:0,
-				stname:''
+				stname:'',
+				product:{
+					
+				}
 				
 			}
 		},
 		onLoad(options) {
+					
 			var date = new Date();
 			var day = ("0" + (date.getDate())).slice(-2);
 			this.nowdate = ("0" + (date.getMonth() + 1)).slice(-2)+'-'+day;
 			this.nowtime = date.getHours('chinese', { hour12: false })+1;
-			this.subscribetime = this.nowdate+' '+this.nowtime+':00';
+			this.subscribetime = this.nowdate+' '+this.nowtime+':00';			
 			this.staffid=options.st_id;//获取技师id
 			this.pic_1=options.pic_1;//获取技师id
-			this.pr_id = options.pr_id;
+			this.pr_id = uni.getStorageSync('PRODUCT').pr_id;
+			this.product = this.product = uni.getStorageSync('PRODUCT');
 			this.stname = options.stname;
-			// 初始化第一次选择的日期
 			uni.request({
-				url:this.apiServer+"/api/manageTime/Initial",
-				method:"GET",
-				success: (res) => {
-					console.log(res);
-					this.dates = res.data.date;
-	
-				}
-			})
-			// 初始化第一次选择的时间
+					url:this.apiServer+"/api/manageTime/Initial",
+					method:"GET",
+					success: (res) => {
+						this.dates = res.data.date;
+					}
+				})
+				// 初始化第一次选择的时间
 			uni.request({
 				url:this.apiServer+"/api/manageTime/clickTime",
 				method:"GET",
@@ -76,7 +79,6 @@
 			gettime:function(date,index){
 				this.nowdate = date;
 				this.activedate = index;
-				console.log(index);
 				uni.request({
 					url:this.apiServer+"/api/manageTime/clickTime",
 					method:"GET",
@@ -88,16 +90,12 @@
 						this.times = res.data;
 					}
 				})
+				
 			},
 			subscribe:function(time,index){
 				this.timeblockactive = index;
 				this.nowtime = time;
 				this.subscribetime = this.nowdate+' '+this.nowtime+':00';
-				console.log(this.subscribetime);
-			},
-			selectPay:function(){
-				// 选择支付方式
-				console.log(12345);
 			}
 		}
 	}
@@ -112,7 +110,6 @@
 	.nav{
 		display: flex;
 		flex-direction: row;
-		flex-wrap: nowrap;
 		height: 100rpx;
 		width: 100%;
 		background-color: #33DCE8;
@@ -121,7 +118,7 @@
 	.dateblock{
 		font-size: 25rpx;
 		line-height: 100rpx;
-		margin-left: 25rpx;
+		margin-left: 26rpx;
 		margin-right: 28rpx;
 		color: #F1F1F1;
 	}

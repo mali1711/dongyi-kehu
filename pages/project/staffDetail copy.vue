@@ -82,7 +82,7 @@ export default {
 		this.product.stname = options.stname;
 		this.product.nickName = options.nickName;
 		this.product.headPicUrl = options.headPicUrl;
-		uni.setStorageSync('product',this.product );//当前选择的技师粗放到缓存内
+		uni.setStorageSync('PRODUCT',this.product );//当前选择的技师粗放到缓存内
 		this.st_id = options.st_id;
 		this.pic_1 = options.pic_1;
 		this.stname = options.stname;

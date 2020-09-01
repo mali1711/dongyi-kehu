@@ -2,7 +2,10 @@
 	<view class="user">
 		<!-- 头部 -->
 		<view class="user-wrap">
-			<button class="appoint cu-btn round bg-yellow" @click="selectTime(st_id,pic_1,pr_id)">确认预约</button>
+			<navigator url="projectList" hover-class="other-navigator-hover">
+				<button class="appoint cu-btn round bg-yellow" >确认预约</button>
+			</navigator>
+			
 			<view class="info">
 				<image class="avatar" mode="aspectFill" :src="userInfo.headPicUrl"></image>
 				<view class="nickname">{{ userInfo.nickName }}</view>
@@ -82,7 +85,7 @@ export default {
 		this.product.stname = options.stname;
 		this.product.nickName = options.nickName;
 		this.product.headPicUrl = options.headPicUrl;
-		uni.setStorageSync('product',this.product );//当前选择的技师粗放到缓存内
+		uni.setStorageSync('PRODUCT',this.product );//当前选择的技师粗放到缓存内
 		this.st_id = options.st_id;
 		this.pic_1 = options.pic_1;
 		this.stname = options.stname;
@@ -111,17 +114,6 @@ export default {
 					}
 				}
 			})
-		}
-		,selectTime(st_id,pic_1,pr_id,name,status,distance){
-			if(status==0){
-				uni.showToast({
-					title:'技师休息中'
-				})
-			}else{
-				uni.navigateTo({
-					url:'/pages/project/stToProTime?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name
-				})
-			}
 		}
 	},
 	data() {
