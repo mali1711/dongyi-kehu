@@ -28,7 +28,7 @@
 			</uni-list-item>	
 			</navigator>
 		</uni-list>
-		<button class="submit" @click="subscribe()" size="mini">确认预约</button>
+		<button class="submit" @click="selectPayWay()" size="mini">确认预约</button>
 		<view class="detalis">
 			<view class="banner">
 				<view class="navtitle">
@@ -144,34 +144,7 @@
 						showCancel: false
 					});
 				}else{
-					uni.request({
-						url:this.apiServer+"/api/order/save",
-						data:{
-							st_id:this.st_id,
-							pr_id:this.pr_id,
-							subtime:this.subscribetime,
-							address: this.address,
-							address_contacts:this.name,
-							address_mobile:this.mobile,
-							longitude:this.longitude,
-							latitude:this.latitude,
-							user_id:uni.getStorageSync('USERID')
-							
-						},
-						method:'POST',
-						success: (res) => {
-							uni.showModal({
-								title:'信息提示',
-								content:res.data.msg,
-								showCancel:false
-							});
-							if(res.data.err==0){
-								uni.redirectTo({
-									url: '/pages/myself/orders?status=0'
-								});
-							}
-						}
-					})
+
 				}
 			},
 			selectPay:function(){
@@ -211,6 +184,60 @@
 					},
 				});
 			},
+			selectPayWay(){ //选择支付方式
+			    var tt = this;
+				let orderInfo = {
+					st_id:this.st_id,pr_id:this.pr_id,subtime:this.subscribetime,address: this.address,address_contacts:this.name,address_mobile:this.mobile,longitude:this.longitude,latitude:this.latitude,user_id:uni.getStorageSync('USERID')
+				};
+				console.log(orderInfo);
+				uni.showActionSheet({
+				    itemList: ['余额支付', '支付宝支付', '微信支付'],
+				    success: function (res) {
+						if(res.tapIndex==0){
+							tt.balancePay(orderInfo)
+						}else if(res.tapIndex==1){
+							tt.aliPay(orderInfo)
+						}else if(res.tapIndex==2){
+							tt.wxPay(orderInfo);
+						}
+				        console.log('选中了第' + (res.tapIndex + 1) + '个按钮');
+				    },
+				    fail: function (res) {
+				        console.log(res.errMsg);
+				    }
+				});
+			},
+			aliPay(orderInfo){
+				uni.showToast({
+				    title: '支付宝支付',
+				    duration: 2000
+				});
+			},
+			wxPay(orderInfo){
+				uni.showToast({
+				    title: '暂未开通',
+				    duration: 2000
+				});
+			},
+			balancePay(orderInfo){  //余额支付
+				uni.request({
+					url:this.apiServer+"/api/order/save",
+					data:orderInfo,
+					method:'POST',
+					success: (res) => {
+						uni.showModal({
+							title:'信息提示',
+							content:res.data.msg,
+							showCancel:false
+						});
+						if(res.data.err==0){
+							uni.redirectTo({
+								url: '/pages/myself/orders?status=0'
+							});
+						}
+					}
+				})
+			}
 		}
 	}
 </script>

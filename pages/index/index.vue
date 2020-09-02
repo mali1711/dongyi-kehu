@@ -165,7 +165,6 @@ export default {
 
         //uni.startPullDownRefresh();
 		var tt = this;
-		
 		var intervalID =  setInterval(function(){
 			uni.startPullDownRefresh({
 				success(res) {

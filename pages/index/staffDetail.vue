@@ -5,7 +5,7 @@
 			<navigator url="projectList" hover-class="other-navigator-hover">
 				<button class="appoint cu-btn round bg-yellow" >确认预约</button>
 			</navigator>
-			阿斯顿ß
+
 			<view class="info">
 				<image class="avatar" mode="aspectFill" :src="userInfo.headPicUrl"></image>
 				<view class="nickname">{{ userInfo.nickName }}</view>

@@ -154,6 +154,10 @@
             "path" : "pages/index/manageTime",
             "style" : {}
         }
+        ,{
+            "path" : "pages/common/common",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarBackgroundColor":"#FFFFFF",
