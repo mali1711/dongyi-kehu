@@ -38,7 +38,7 @@
 		},
 		data() {
 			return {
-				title: '你好董亿',
+				title: '你好董扬',
 				projectList:[],
 				st_id:'',
 				pic_1:'',

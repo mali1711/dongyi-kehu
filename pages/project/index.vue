@@ -38,15 +38,12 @@
 		},
 		data() {
 			return {
-				title: '你好董亿',
+				title: '你好董扬',
 				projectList: [],
 			}
 		},
 		onLoad() {
 			this.getData();
-			//console.log(this.projectList)
-			console.log(this.projectList);
-			console.log(this.title)
 		},
 		methods: {
 			getData() {

@@ -49,7 +49,7 @@
 							2.订单确认后，修改订单或退款需提前2小时通知；<br>
 							3.预约时间前2小时内退单将按30元/人扣取误工费；<br>
 							4.如商家接单后爽约将全额退款并向您额外赔付30元；<br>
-							5.为保障您的权益，所有费用请通过董亿平台支付；<br>
+							5.为保障您的权益，所有费用请通过董杨平台支付；<br>
 							6.本店24小时上门服务，但因夜间交通不便，晚21:00～早07:30间服务的订单，需另行支付技师往返打车费用（往返金额共计不超过100元）。<br>
 							</br>
 						</view>
@@ -94,14 +94,12 @@
 			this.pic_1 = options.pic_1;
 			this.pr_id = options.pr_id;
 			let pr_id = options.pr_id;
-			console.log(this.stname);
 			uni.request({
 				url:this.apiServer+"/api/project/"+pr_id,
 				method:'GET',
 				success: (res) => {
 					this.data = res.data;
 					this.projectpic =  this.apiServer+'/uploads/'+res.data.photo
-					console.log(this.projectpic)
 				}
 			});
 			var t = this;
@@ -134,43 +132,116 @@
 		},
 		methods: {
 			subscribe:function(){
-				if(this.st_id==undefined){
+				var tt = this;
+				this.orderInfo = {
+					st_id:this.st_id,
+					pr_id:this.pr_id,
+					subtime:this.subscribetime,
+					address: this.address,
+					address_contacts:this.name,
+					address_mobile:this.mobile,
+					longitude:this.longitude,
+					latitude:this.latitude,
+					user_id:uni.getStorageSync('USERID')
+				};
+				if(this.orderInfo.subtime=='请选择时间'){
 					uni.showModal({
-						title:'错误提示',
-						content: '请选择技师，以及预约时间',
-						showCancel: false
-					});
-				}else{
-					uni.request({
-						url:this.apiServer+"/api/order/save",
-						data:{
-							st_id:this.st_id,
-							pr_id:this.pr_id,
-							subtime:this.subscribetime,
-							address: this.address,
-							address_contacts:this.name,
-							address_mobile:this.mobile,
-							longitude:this.longitude,
-							latitude:this.latitude,
-							user_id:uni.getStorageSync('USERID')
-							
-						},
-						method:'POST',
-						success: (res) => {
-							console.log(res);
-							uni.showModal({
-								title:'信息提示',
-								content:res.data.msg,
-								showCancel:false
-							});
-							if(res.data.err==0){
-								uni.redirectTo({
-									url: '/pages/myself/orders?status=0'
-								});
-							}
-						}
+						title:"错误提示",
+						content:"请选择预约时间",
+						showCancel:false
 					})
+				}else{
+				uni.showActionSheet({
+				    itemList: ['余额支付', '支付宝支付', '微信支付'],
+				    success: function (res) {
+						if(res.tapIndex==0){
+							tt.balancePay()// 余额支付
+						}else if(res.tapIndex==1){
+							tt.aliPay() // 支付宝支付
+						}else if(res.tapIndex==2){
+							tt.wxPay(); //微信支付
+						}
+				    },
+				    fail: function (res) {
+				        console.log(res.errMsg);
+				    }
+				});
+			}},
+			async aliPay(){
+
+				var orderInfo =  await this.getOrderInfo();
+				if (orderInfo.statusCode!== 200) {
+				    uni.showModal({
+				        content: "获得订单信息失败",
+				        showCancel: false
+				    })
+				    return;
 				}
+				uni.requestPayment({
+				    provider: 'alipay',
+				    orderInfo: orderInfo.data,
+				    success: (e) => {
+				        console.log("success", e);
+				        uni.showToast({
+				            title: "支付成功"
+				        })
+				    },
+				    fail: (e) => {
+				        console.log("fail", e);
+				        uni.showModal({
+				            content: "支付失败",//+ e.errMsg,
+				            showCancel: false
+				        })
+				    },
+					complete: () => {
+				        console.log("payment结束")
+				        this.loading = false;
+				    }
+				})
+			
+			},
+			wxPay(orderInfo){
+				uni.showToast({
+				    title: '暂未开通',
+				    duration: 2000
+				});
+			},
+			balancePay(orderInfo){  //余额支付
+				uni.request({
+					url:this.apiServer+"/api/order/save",
+					data:orderInfo,
+					method:'POST',
+					success: (res) => {
+						uni.showModal({
+							title:'信息提示',
+							content:res.data.msg,
+							showCancel:false
+						});
+						if(res.data.err==0){
+							uni.redirectTo({
+								url: '/pages/myself/orders?status=0'
+							});
+						}
+					}
+				})
+			},
+			getOrderInfo() {
+				var OrderInfo = this.orderInfo;
+			    let url = this.apiServer+'/api/order/aliPay';
+			    return new Promise((res) => {
+			        uni.request({
+						method:'POST',
+			            url: url,
+						data:OrderInfo,
+			            success: (result) => {
+			                res(result);
+			            },
+			            fail: (e) => {
+							console.log(e);
+			                res(e);
+			            }
+			        })
+			    })
 			},
 			selectPay:function(){
 				var payInfo = {
@@ -186,8 +257,6 @@
 				};
 				uni.setStorageSync('payInfo',payInfo);
 				var s = uni.getStorageSync('payInfo');
-				console.log(s);
-				console.log(payInfo);
 			},
 			myaddress(){//获取当前用户地址
 				uni.request({

@@ -60,7 +60,7 @@
 		},
 		data() {
 			return {
-				title: '你好董亿',
+				title: '你好董扬',
 				path: 'http://imgsrc.baidu.com/forum/w%3D580/sign=791a660d9c2397ddd679980c6983b216/591f9758d109b3de80a0bb82c1bf6c81810a4c89.jpg',
 				animationType: 'fadRotateZ',
 				balance: ''

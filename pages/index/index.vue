@@ -56,7 +56,7 @@ export default {
 			keys:'',
 			color:'',
 			content:'',
-			title: '你好董亿',
+			title: '你好董扬',
 			staffList : null,
 			block:'推荐技师',
 			longitude:'',
