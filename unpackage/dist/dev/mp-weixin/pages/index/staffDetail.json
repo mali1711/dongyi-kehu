@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "技师详情",
+  "usingComponents": {
+    "com-nav": "/components/com-nav/com-nav"
+  }
+}

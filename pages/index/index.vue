@@ -42,7 +42,6 @@ import goodsFilter from '@/components/yb-filter/index.vue';
 import utils from '@/common/utils.js';
 	import uniList from "../../components/uni-list/uni-list.vue"
 	import uniListItem from "../../components/uni-list-item/uni-list-item.vue"
-	import highlight from "@/components/helang-highlight/helang-highlight.vue"
 
 export default {
 	data() {

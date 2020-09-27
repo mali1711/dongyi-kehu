@@ -24,27 +24,27 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.content.data-v-d7e5e5d4 {
+.content.data-v-8b4140f2 {
   padding: 60rpx 100rpx 100rpx;
 }
-.logo.data-v-d7e5e5d4 {
+.logo.data-v-8b4140f2 {
   text-align: center;
 }
-.logo image.data-v-d7e5e5d4 {
+.logo image.data-v-8b4140f2 {
   height: 200rpx;
   width: 200rpx;
   margin: 0 0 40rpx;
 }
-.uni-form-item.data-v-d7e5e5d4 {
+.uni-form-item.data-v-8b4140f2 {
   margin-bottom: 40rpx;
   padding: 0;
   border-bottom: 1px solid #e3e3e3;
 }
-.uni-form-item .uni-input.data-v-d7e5e5d4 {
+.uni-form-item .uni-input.data-v-8b4140f2 {
   font-size: 30rpx;
   padding: 7px 0;
 }
-.column-with-btn.data-v-d7e5e5d4 {
+.column-with-btn.data-v-8b4140f2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -59,42 +59,42 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.column-with-btn button.data-v-d7e5e5d4 {
+.column-with-btn button.data-v-8b4140f2 {
   font-size: 24rpx;
   margin: 0;
   width: 180rpx;
   text-align: center;
 }
-.column-with-btn button.data-v-d7e5e5d4:after {
+.column-with-btn button.data-v-8b4140f2:after {
   border: none;
 }
-.column-with-btn button.active.data-v-d7e5e5d4 {
+.column-with-btn button.active.data-v-8b4140f2 {
   background-color: #fd5f5e;
   color: #fff;
 }
-.img-captcha.data-v-d7e5e5d4 {
+.img-captcha.data-v-8b4140f2 {
   width: 150rpx;
   height: 60rpx;
 }
-button[type="primary"].data-v-d7e5e5d4 {
+button[type="primary"].data-v-8b4140f2 {
   background-color: #fd5f5e;
   -webkit-border-radius: 0;
           border-radius: 0;
   font-size: 34rpx;
   margin-top: 60rpx;
 }
-.links.data-v-d7e5e5d4 {
+.links.data-v-8b4140f2 {
   text-align: center;
   margin-top: 40rpx;
   font-size: 26rpx;
   color: #999;
 }
-.links view.data-v-d7e5e5d4 {
+.links view.data-v-8b4140f2 {
   display: inline-block;
   vertical-align: top;
   margin: 0 10rpx;
 }
-.links .link-highlight.data-v-d7e5e5d4 {
+.links .link-highlight.data-v-8b4140f2 {
   color: #fd5f5e;
 }
 

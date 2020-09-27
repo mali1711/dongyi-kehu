@@ -51,7 +51,7 @@
 				default: '#ddd'
 			}
 		},
-		created() {
+		created() { 
 			this.stepperNum = this.val;
 			this.stepperCacheNum = this.val;
 		},

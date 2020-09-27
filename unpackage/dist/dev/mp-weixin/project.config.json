@@ -7,9 +7,9 @@
 		"urlCheck": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.2",
+	"libVersion": "",
 	"appid": "touristappid",
-	"projectname": "董亿",
+	"projectname": "董杨",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -26,16 +26,10 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0
-				},
-				{
-					"id": 1,
-					"name": "pages/myself/address",
-					"pathName": "pages/myself/address",
-					"query": ""
 				}
 			]
 		}

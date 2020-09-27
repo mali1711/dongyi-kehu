@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "uni-swiper-dot": "/components/com-nav/uni-swiper-dot",
+    "uni-grid": "/components/com-nav/uni-grid",
+    "uni-grid-item": "/components/com-nav/uni-grid-item"
+  }
+}

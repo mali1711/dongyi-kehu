@@ -141,10 +141,6 @@
 		    "style" : {}
 		},
 		{
-		    "path" : "pages/index/projectDetails",
-		    "style" : {}
-		},
-		{
 		    "path" : "pages/index/staffDetail",
 		    "style" : {
 				"navigationBarTitleText":"技师详情"

@@ -12,7 +12,7 @@
 /******/ 		var moduleId, chunkId, i = 0, resolves = [];
 /******/ 		for(;i < chunkIds.length; i++) {
 /******/ 			chunkId = chunkIds[i];
-/******/ 			if(installedChunks[chunkId]) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
 /******/ 				resolves.push(installedChunks[chunkId][0]);
 /******/ 			}
 /******/ 			installedChunks[chunkId] = 0;
@@ -48,6 +48,7 @@
 /******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
 /******/ 			}
 /******/ 		}
+/******/
 /******/ 		return result;
 /******/ 	}
 /******/
@@ -104,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/uni-icons/uni-icons":1,"components/uni-badge/uni-badge":1,"components/yb-filter/index":1,"components/QS-image/QS-image":1,"components/uni-list-item/uni-list-item":1,"components/uni-list/uni-list":1,"components/lml-layout/col":1,"components/lml-layout/row":1,"components/xiujun-time-selector/index":1,"components/sunui-stepper/sunui-stepper":1};
+/******/ 		var cssChunks = {"components/uni-icons/uni-icons":1,"components/uni-badge/uni-badge":1,"components/yb-filter/index":1,"components/QS-image/QS-image":1,"components/uni-list-item/uni-list-item":1,"components/uni-list/uni-list":1,"components/lml-layout/col":1,"components/lml-layout/row":1,"components/xiujun-time-selector/index":1,"components/com-nav/com-nav":1,"components/com-nav/uni-grid":1,"components/com-nav/uni-grid-item":1,"components/com-nav/uni-swiper-dot":1,"components/uni-swiper-dot/uni-swiper-dot":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/uni-icons/uni-icons":"components/uni-icons/uni-icons","components/uni-badge/uni-badge":"components/uni-badge/uni-badge","components/yb-filter/index":"components/yb-filter/index","components/QS-image/QS-image":"components/QS-image/QS-image","components/uni-list-item/uni-list-item":"components/uni-list-item/uni-list-item","components/uni-list/uni-list":"components/uni-list/uni-list","components/lml-layout/col":"components/lml-layout/col","components/lml-layout/row":"components/lml-layout/row","components/xiujun-time-selector/index":"components/xiujun-time-selector/index","components/sunui-stepper/sunui-stepper":"components/sunui-stepper/sunui-stepper"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/uni-icons/uni-icons":"components/uni-icons/uni-icons","components/helang-highlight/helang-highlight":"components/helang-highlight/helang-highlight","components/uni-badge/uni-badge":"components/uni-badge/uni-badge","components/yb-filter/index":"components/yb-filter/index","components/QS-image/QS-image":"components/QS-image/QS-image","components/uni-list-item/uni-list-item":"components/uni-list-item/uni-list-item","components/uni-list/uni-list":"components/uni-list/uni-list","components/lml-layout/col":"components/lml-layout/col","components/lml-layout/row":"components/lml-layout/row","components/xiujun-time-selector/index":"components/xiujun-time-selector/index","components/com-nav/com-nav":"components/com-nav/com-nav","components/com-nav/uni-grid":"components/com-nav/uni-grid","components/com-nav/uni-grid-item":"components/com-nav/uni-grid-item","components/com-nav/uni-swiper-dot":"components/com-nav/uni-swiper-dot","components/uni-swiper-dot/uni-swiper-dot":"components/uni-swiper-dot/uni-swiper-dot"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
@@ -170,6 +171,8 @@
 /******/ 				}
 /******/ 				script.src = jsonpScriptSrc(chunkId);
 /******/
+/******/ 				// create error before stack unwound to get useful stacktrace later
+/******/ 				var error = new Error();
 /******/ 				onScriptComplete = function (event) {
 /******/ 					// avoid mem leaks in IE.
 /******/ 					script.onerror = script.onload = null;
@@ -179,7 +182,8 @@
 /******/ 						if(chunk) {
 /******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
 /******/ 							var realSrc = event && event.target && event.target.src;
-/******/ 							var error = new Error('Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')');
+/******/ 							error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 							error.name = 'ChunkLoadError';
 /******/ 							error.type = errorType;
 /******/ 							error.request = realSrc;
 /******/ 							chunk[1](error);
