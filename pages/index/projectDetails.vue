@@ -263,11 +263,13 @@
 				});
 			},
 			balancePay(orderInfo){  //余额支付
+				var tt = this;
 				uni.request({
 					url:this.apiServer+"/api/order/save",
-					data:orderInfo,
+					data:tt.orderInfo,
 					method:'POST',
 					success: (res) => {
+						console.log(res);
 						uni.showModal({
 							title:'信息提示',
 							content:res.data.msg,

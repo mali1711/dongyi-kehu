@@ -56,7 +56,7 @@ export default {
 			color:'',
 			content:'',
 			title: '你好董扬',
-			staffList : {},
+			staffList : null,
 			block:'推荐技师',
 			longitude:'',
 			latitude:'',
@@ -112,6 +112,7 @@ export default {
 				uni.navigateTo({
 					//url:'/pages/project/stToProTime?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name
 					url:'/pages/index/staffDetail?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name
+		
 					})
 			}
 		}
@@ -123,9 +124,9 @@ export default {
 			            var enable = cllocationManger.locationServicesEnabled();    
 			            var status = cllocationManger.authorizationStatus();     
 			            if (enable && status != 2) {    
-			                //console.log("手机系统的定位已经打开");    
+			                console.log("手机系统的定位已经打开");    
 			            } else {   
-			                //console.log("手机系统的定位没有打开");  
+			                console.log("手机系统的定位没有打开");  
 			                                 //  定位没有开启时  提示用户是否开启  
 			                  plus.nativeUI.confirm("定位权限没有开启，是否去开启？", function(e) {    
 			                        if (e.index == 0) {    
@@ -150,11 +151,8 @@ export default {
 	,onReady: function() {	
 		//this.loadCouponListList();
 	},
-	onShow() {
-		this.checkLogin();
-	},
 	onLoad: function(options) {
-		this.checkLogin();
+	this.dingweiQuanxian();
 	uni.getLocation({
 		type:'gcj02',
 		altitude:true,
@@ -162,29 +160,29 @@ export default {
 			uni.setStorageSync('LATITUDE',res.latitude);
 			uni.setStorageSync('LONGITUDE',res.longitude);
 		}
-	});
-	let lng = uni.getStorageSync('LONGITUDE');
-	let lat = uni.getStorageSync('LATITUDE'); 
-	console.log("信息获取失败");
-	uni.request({
-		url: this.apiServer+'/api/staff/',
-		method: 'GET',
-		data: {
-			filter:'create_time',//排序字段
-			order:1,//升序或者降序 1，0
-			lng:lng,
-			lat:lat
-		},
-		success: res => {
-			console.log("信息获取成功");
-			this.staffList = res.data.data;
-		},
-		fail: () => {
-			console.log("信息获取失败");
-		},
-		complete: () => {}
-	});
-	this.dingweiQuanxian();//检查用户是否开启了定位权限
+	})
+
+		var tt = this;
+		var intervalID =  setInterval(function(){
+			uni.startPullDownRefresh({
+				success(res) {
+					if(tt.staffList==null){
+						console.log(intervalID);
+					}else{
+						clearInterval(intervalID)
+					}
+				}
+			});
+		}, 1000)
+		
+
+			function demo(){
+				if(tt.staffList==null){
+
+				}
+
+			};
+	
 	},
 	onPullDownRefresh() {
 		let lng = uni.getStorageSync('LONGITUDE');

@@ -6,7 +6,7 @@
 			<goodsFilter :filters="goodsFilters" @sortChanged="goodsFilterChanged" @shapeChanged="goodsTemplateChanged" :showShape="true" :shapeValue="2"></goodsFilter>
 		</view>
 		<!-- 加载更多 -->
-		<view class="text-center text-xs content text-gray">技术支持：QQ:997735479</view>
+		<view class="text-center text-xs content text-gray"></view>
 	</view>
 </template>
 
@@ -28,16 +28,8 @@ export default {
 		// 排序，筛选更改
 		goodsFilterChanged(filter){
 			console.log("filter:",filter)
-			// 此处可根据fitler数据，从服务器端加载数据
-			// pageIndex = 0;
-			// this.isEnd = false;
-			// this.loadingType = 0;
-			// this.curCateFid=filter.option || ""
-			// // 加载数据
-			// const resetData=true;
-			// this.loadMoreGoods(filter,resetData);
 		}
-		// 点击了右侧的模板选择按钮：即单列还是双列展示商品
+
 		,goodsTemplateChanged(templateValue){
 			
 			this.goodsListTemplate = templateValue;
@@ -53,21 +45,12 @@ export default {
 		goodsListTemplateType: function() {
 			return this.goodsListTemplate;
 		},
-		// 商品过滤器参数 <!-- //1：按距离，2：按销量，3：按人气，4：按最新，5：按价格 -->
 		goodsFilters:function() {
-			// 参考的下拉选项如下，可从服务器端加载：
-			//options:[{name:'不限',value:""},{name:'酒水',value:"js",children:[{name:'啤酒',value:"pj"}]}]},
-			// const cateOptions=this.cateList.map(function (item){
-			// 	return {name:item.Name,value:item.Fid}
-			// });
 			const cateOptions = [{name:'推荐',value:'0'},...this.cateList];
-			// filterType为0，普通方式，无排序，1：排序模式，2：下拉筛选模式，当前支持一级，多级可自行扩展
 			return [
 			{title:'类别',value:0,filterType:2,
 				options:cateOptions},
-			// {title:'推荐',value:0,filterType:0,disableAscDesc:true},
 			{title:'距离',value:2,filterType:0},
-			// {title:'人气', value:3, filterType:1},
 			{title:'最新',value:4,filterType:1},
 			{title:'价格',value:5,filterType:1, initAscState:true}]
 		}

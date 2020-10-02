@@ -1,0 +1,22 @@
+{
+	"data": {
+		"code": "200",
+		"msg": "更新信息获取成功",
+		"data": {
+			"latestVersion": "1.0",
+			"currentVersionStatus": true,
+			"updateInformation": "",
+			"androidUrl": "http://resources.sir6.cn/dongyi1.08.apk",
+			"iosUrl": "http://resources.sir6.cn/dongyi1.08.apk"
+		}
+	},
+	"statusCode": 200,
+	"header": {
+		"Content-Type": "application/json; charset=utf-8",
+		"x-powered-by": "PHP/7.0.19",
+		"Server": "nginx",
+		"Date": "Thu, 01 Oct 2020 16:38:51 GMT"
+	},
+	"errMsg": "request:ok",
+	"cookies": []
+}

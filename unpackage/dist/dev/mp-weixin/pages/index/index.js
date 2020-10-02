@@ -199,9 +199,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var _utils = _interopRequireDefault(__webpack_require__(/*! @/common/utils.js */ 19));
 var _uniList = _interopRequireDefault(__webpack_require__(/*! ../../components/uni-list/uni-list.vue */ 20));
-var _uniListItem = _interopRequireDefault(__webpack_require__(/*! ../../components/uni-list-item/uni-list-item.vue */ 27));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var goodsFilter = function goodsFilter() {__webpack_require__.e(/*! require.ensure | components/yb-filter/index */ "components/yb-filter/index").then((function () {return resolve(__webpack_require__(/*! @/components/yb-filter/index.vue */ 238));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _uniListItem = _interopRequireDefault(__webpack_require__(/*! ../../components/uni-list-item/uni-list-item.vue */ 27));var _data$methods$onReady;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var goodsFilter = function goodsFilter() {__webpack_require__.e(/*! require.ensure | components/yb-filter/index */ "components/yb-filter/index").then((function () {return resolve(__webpack_require__(/*! @/components/yb-filter/index.vue */ 238));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = (_data$methods$onReady = {
 
-{
+
   data: function data() {
     return {
       // 默认双列显示
@@ -214,7 +214,7 @@ var _uniListItem = _interopRequireDefault(__webpack_require__(/*! ../../componen
       color: '',
       content: '',
       title: '你好董扬',
-      staffList: null,
+      staffList: {},
       block: '推荐技师',
       longitude: '',
       latitude: '',
@@ -271,7 +271,6 @@ var _uniListItem = _interopRequireDefault(__webpack_require__(/*! ../../componen
           //url:'/pages/project/stToProTime?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name
           url: '/pages/index/staffDetail?st_id=' + st_id + '&pic_1=' + pic_1 + '&pr_id=' + pr_id + '&stname=' + name });
 
-
       }
     },
     appquit: function appquit() {
@@ -309,8 +308,11 @@ var _uniListItem = _interopRequireDefault(__webpack_require__(/*! ../../componen
   onReady: function onReady() {
     //this.loadCouponListList();
   },
-  onLoad: function onLoad(options) {
-    this.dingweiQuanxian();
+  onShow: function onShow() {
+    this.checkLogin();
+  },
+  onLoad: function onLoad(options) {var _this2 = this;
+    this.checkLogin();
     uni.getLocation({
       type: 'gcj02',
       altitude: true,
@@ -319,31 +321,30 @@ var _uniListItem = _interopRequireDefault(__webpack_require__(/*! ../../componen
         uni.setStorageSync('LONGITUDE', res.longitude);
       } });
 
+    var lng = uni.getStorageSync('LONGITUDE');
+    var lat = uni.getStorageSync('LATITUDE');
+    console.log("信息获取失败");
+    uni.request({
+      url: this.apiServer + '/api/staff/',
+      method: 'GET',
+      data: {
+        filter: 'create_time', //排序字段
+        order: 1, //升序或者降序 1，0
+        lng: lng,
+        lat: lat },
 
-    //uni.startPullDownRefresh();
-    var tt = this;
-    var intervalID = setInterval(function () {
-      uni.startPullDownRefresh({
-        success: function success(res) {
-          if (tt.staffList == null) {
-            console.log(intervalID);
-          } else {
-            clearInterval(intervalID);
-          }
-        } });
+      success: function success(res) {
+        console.log("信息获取成功");
+        _this2.staffList = res.data.data;
+      },
+      fail: function fail() {
+        console.log("信息获取失败");
+      },
+      complete: function complete() {} });
 
-    }, 1000);
-
-
-    function demo() {
-      if (tt.staffList == null) {
-
-      }
-
-    };
-
+    this.dingweiQuanxian(); //检查用户是否开启了定位权限
   },
-  onPullDownRefresh: function onPullDownRefresh() {var _this2 = this;
+  onPullDownRefresh: function onPullDownRefresh() {var _this3 = this;
     var lng = uni.getStorageSync('LONGITUDE');
     var lat = uni.getStorageSync('LATITUDE');
     uni.request({
@@ -357,7 +358,7 @@ var _uniListItem = _interopRequireDefault(__webpack_require__(/*! ../../componen
 
       success: function success(res) {
         // console.log("信息获取成功");
-        _this2.staffList = res.data.data;
+        _this3.staffList = res.data.data;
       },
       fail: function fail() {},
       complete: function complete() {} });
@@ -366,36 +367,36 @@ var _uniListItem = _interopRequireDefault(__webpack_require__(/*! ../../componen
       // console.log("停止刷新动作");
       uni.stopPullDownRefresh();
     }, 2000);
+  } }, _defineProperty(_data$methods$onReady, "onShow", function onShow()
+{
+
+}), _defineProperty(_data$methods$onReady, "computed",
+
+{
+  goodsListTemplateType: function goodsListTemplateType() {
+    return this.goodsListTemplate;
   },
-  onShow: function onShow() {
+  // 商品过滤器参数 <!-- //1：按距离，2：按销量，3：按人气，4：按最新，5：按价格 -->
+  goodsFilters: function goodsFilters() {
+    // 参考的下拉选项如下，可从服务器端加载：
+    //options:[{name:'不限',value:""},{name:'酒水',value:"js",children:[{name:'啤酒',value:"pj"}]}]},
+    // const cateOptions=this.cateList.map(function (item){
+    // 	return {name:item.Name,value:item.Fid}
+    // });
+    var cateOptions = [{ name: '最新', value: '0' }].concat(_toConsumableArray(this.cateList));
+    // filterType为0，普通方式，无排序，1：排序模式，2：下拉筛选模式，当前支持一级，多级可自行扩展
+    return [
+    { title: '最新', value: 'create_time', filterType: 1,
+      options: cateOptions },
+    // {title:'推荐',value:0,filterType:0,disableAscDesc:true},
+    { title: '状态', value: 'status', filterType: 1 },
+    // {title:'人气', value:3, filterType:1},
+    { title: '距离', value: 'distance', filterType: 1 },
+    { title: '单量', value: 'order_number', filterType: 1, initAscState: true }];
+  } }), _defineProperty(_data$methods$onReady, "components",
 
-  },
-
-  computed: {
-    goodsListTemplateType: function goodsListTemplateType() {
-      return this.goodsListTemplate;
-    },
-    // 商品过滤器参数 <!-- //1：按距离，2：按销量，3：按人气，4：按最新，5：按价格 -->
-    goodsFilters: function goodsFilters() {
-      // 参考的下拉选项如下，可从服务器端加载：
-      //options:[{name:'不限',value:""},{name:'酒水',value:"js",children:[{name:'啤酒',value:"pj"}]}]},
-      // const cateOptions=this.cateList.map(function (item){
-      // 	return {name:item.Name,value:item.Fid}
-      // });
-      var cateOptions = [{ name: '最新', value: '0' }].concat(_toConsumableArray(this.cateList));
-      // filterType为0，普通方式，无排序，1：排序模式，2：下拉筛选模式，当前支持一级，多级可自行扩展
-      return [
-      { title: '最新', value: 'create_time', filterType: 1,
-        options: cateOptions },
-      // {title:'推荐',value:0,filterType:0,disableAscDesc:true},
-      { title: '状态', value: 'status', filterType: 1 },
-      // {title:'人气', value:3, filterType:1},
-      { title: '距离', value: 'distance', filterType: 1 },
-      { title: '单量', value: 'order_number', filterType: 1, initAscState: true }];
-    } },
-
-  components: {
-    goodsFilter: goodsFilter } };exports.default = _default;
+{
+  goodsFilter: goodsFilter }), _data$methods$onReady);exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

@@ -265,7 +265,7 @@
 							method: 'POST',
 							data: {
 								order_id: tt.orderInfo.order_id,
-								user_id: 1,
+								user_id: uni.getStorageSync('USERID'),
 								add_purchase_num: tt.totalnum
 							},
 							success: res => {

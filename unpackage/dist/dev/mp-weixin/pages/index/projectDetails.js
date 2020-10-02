@@ -402,6 +402,7 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     balancePay: function balancePay(orderInfo) {//余额支付
+      console.log(orderInfo);
       uni.request({
         url: this.apiServer + "/api/order/save",
         data: orderInfo,
