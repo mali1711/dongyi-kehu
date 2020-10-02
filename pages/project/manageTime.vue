@@ -118,8 +118,8 @@
 	.dateblock{
 		font-size: 25rpx;
 		line-height: 100rpx;
-		margin-left: 26rpx;
-		margin-right: 28rpx;
+		margin-left: 24rpx;
+		margin-right: 26rpx;
 		color: #F1F1F1;
 	}
 	.dateblockActive{

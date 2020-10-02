@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "订单详情",
-  "usingComponents": {
-    "sunui-stepper": "/components/sunui-stepper/sunui-stepper"
-  }
+  "usingComponents": {}
 }

@@ -39,7 +39,7 @@
 		components: {uniList,uniListItem},
 		data() {
 			return {
-				title: '你好董亿'
+				title: '你好董杨'
 			}
 		},
 		onLoad() {

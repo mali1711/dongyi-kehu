@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "董亿在线上门服务",
+  "navigationBarTitleText": "董杨在线上门服务",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "uni-list": "/components/uni-list/uni-list",

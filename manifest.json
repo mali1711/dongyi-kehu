@@ -1,5 +1,5 @@
 {
-    "name" : "董亿",
+    "name" : "董杨",
     "appid" : "__UNI__5B0218D",
     "description" : "上门服务app",
     "versionName" : "1.0.5",
@@ -24,9 +24,9 @@
             "Push" : {},
             "Share" : {},
             "Speech" : {},
-            "Statistic" : {},
             "Payment" : {},
-            "Maps" : {}
+            "Maps" : {},
+            "Geolocation" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -52,14 +52,12 @@
                     "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
-                    "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>",
                     "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
                     "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
                     "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
-                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
-                    "<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>"
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
                 ]
             },
             /* ios打包配置 */
@@ -84,7 +82,15 @@
                 },
                 "speech" : {
                     "ifly" : {}
-                }
+                },
+                "geolocation" : {
+                    "amap" : {
+                        "__platform__" : [ "ios", "android" ],
+                        "appkey_ios" : "2b36092fa5621b2caafb1a49d6a051a5",
+                        "appkey_android" : "294b9ebc20eb4b725930ac26352f3e37"
+                    }
+                },
+                "oauth" : {}
             },
             "splashscreen" : {
                 "android" : {

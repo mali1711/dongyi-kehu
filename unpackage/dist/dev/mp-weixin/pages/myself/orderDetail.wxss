@@ -1,9 +1,14 @@
 
-.jiagouxinxi{
+.jiagouxinxi {
 	float: right;
 	margin-bottom: 20rpx;
 }
 .content {}
+.staffImage{
+	background-position:center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
 .address {
 	display: -webkit-box;
 	display: -webkit-flex;

@@ -1,1 +1,1 @@
-<view class="row data-v-687b0cfe" style="{{('justify-content:'+align)}}"><block wx:if="{{retract!=0}}"><view class="{{['data-v-687b0cfe','row-'+retract]}}"></view></block><slot></slot></view>
+<view class="row data-v-1bd6681c" style="{{('justify-content:'+align)}}"><block wx:if="{{retract!=0}}"><view class="{{['data-v-1bd6681c','row-'+retract]}}"></view></block><slot></slot></view>

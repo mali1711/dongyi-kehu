@@ -3,7 +3,7 @@
 		{
         "path": "pages/index/index",
         "style": {
-            "navigationBarTitleText": "董亿在线上门服务",
+            "navigationBarTitleText": "董杨在线上门服务",
 			"enablePullDownRefresh":true,
 			"app-plus": {
 			    "softinputNavBar": "none"
@@ -141,10 +141,6 @@
 		    "style" : {}
 		},
 		{
-		    "path" : "pages/index/projectDetails",
-		    "style" : {}
-		},
-		{
 		    "path" : "pages/index/staffDetail",
 		    "style" : {
 				"navigationBarTitleText":"技师详情"
@@ -154,11 +150,15 @@
             "path" : "pages/index/manageTime",
             "style" : {}
         }
+        ,{
+            "path" : "pages/common/common",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarBackgroundColor":"#FFFFFF",
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "董亿"
+		"navigationBarTitleText": "董扬"
 	},
 	"tabBar": {
 		"color":"#555555",

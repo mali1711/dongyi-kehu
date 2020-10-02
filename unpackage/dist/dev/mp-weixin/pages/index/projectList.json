@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "vrow": "/components/lml-layout/row",
+    "vcol": "/components/lml-layout/col"
+  }
+}
