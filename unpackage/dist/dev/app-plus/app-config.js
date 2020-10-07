@@ -1,66 +1,7 @@
+"use weex:vue";
 /******/ (function(modules) { // webpackBootstrap
-/******/ 	// install a JSONP callback for chunk loading
-/******/ 	function webpackJsonpCallback(data) {
-/******/ 		var chunkIds = data[0];
-/******/ 		var moreModules = data[1];
-/******/ 		var executeModules = data[2];
-/******/
-/******/ 		// add "moreModules" to the modules object,
-/******/ 		// then flag all "chunkIds" as loaded and fire callback
-/******/ 		var moduleId, chunkId, i = 0, resolves = [];
-/******/ 		for(;i < chunkIds.length; i++) {
-/******/ 			chunkId = chunkIds[i];
-/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 				resolves.push(installedChunks[chunkId][0]);
-/******/ 			}
-/******/ 			installedChunks[chunkId] = 0;
-/******/ 		}
-/******/ 		for(moduleId in moreModules) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
-/******/ 				modules[moduleId] = moreModules[moduleId];
-/******/ 			}
-/******/ 		}
-/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
-/******/
-/******/ 		while(resolves.length) {
-/******/ 			resolves.shift()();
-/******/ 		}
-/******/
-/******/ 		// add entry modules from loaded chunk to deferred list
-/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
-/******/
-/******/ 		// run deferred modules when all chunks ready
-/******/ 		return checkDeferredModules();
-/******/ 	};
-/******/ 	function checkDeferredModules() {
-/******/ 		var result;
-/******/ 		for(var i = 0; i < deferredModules.length; i++) {
-/******/ 			var deferredModule = deferredModules[i];
-/******/ 			var fulfilled = true;
-/******/ 			for(var j = 1; j < deferredModule.length; j++) {
-/******/ 				var depId = deferredModule[j];
-/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
-/******/ 			}
-/******/ 			if(fulfilled) {
-/******/ 				deferredModules.splice(i--, 1);
-/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
-/******/ 			}
-/******/ 		}
-/******/
-/******/ 		return result;
-/******/ 	}
-/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
-/******/ 	// object to store loaded and loading chunks
-/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 	// Promise = chunk loading, 0 = chunk loaded
-/******/ 	var installedChunks = {
-/******/ 		"app-config": 0
-/******/ 	};
-/******/
-/******/ 	var deferredModules = [];
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -137,18 +78,63 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
-/******/
-/******/ 	var jsonpArray = this["webpackJsonp"] = this["webpackJsonp"] || [];
-/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
-/******/ 	jsonpArray.push = webpackJsonpCallback;
-/******/ 	jsonpArray = jsonpArray.slice();
-/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
-/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/
-/******/ 	// run deferred modules from other chunks
-/******/ 	checkDeferredModules();
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ([]);
+/******/ ([
+/* 0 */
+/*!*************************************************!*\
+  !*** /Users/mali/Ob/董亿/client/董亿客户端/pages.json ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+if (typeof Promise !== 'undefined' && !Promise.prototype.finally) {
+  Promise.prototype.finally = function(callback) {
+    const promise = this.constructor
+    return this.then(
+      value => promise.resolve(callback()).then(() => value),
+      reason => promise.resolve(callback()).then(() => {
+        throw reason
+      })
+    )
+  }
+}
+if(uni.restoreGlobal){
+  uni.restoreGlobal(weex,plus,setTimeout,clearTimeout,setInterval,clearInterval)
+}
+__definePage('pages/index/index',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/index/index.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/index',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/index.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/project/index',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/project/index.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/login',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/login.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/forgetPasswd',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/forgetPasswd.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/registration',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/registration.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/myInfo',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/myInfo.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/address',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/address.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/project/projectDetails',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/project/projectDetails.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/project/selectTime',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/project/selectTime.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/orders',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/orders.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/project/staffList',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/project/staffList.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/project/manageTime',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/project/manageTime.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/project/stTopro',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/project/stTopro.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/project/stToProTime',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/project/stToProTime.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/editpasswd',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/editpasswd.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/orderDetail',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/orderDetail.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/myself/Recharge',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/myself/Recharge.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/index/stToProTimeByStaff',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/index/stToProTimeByStaff.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/project/staffDetail',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/project/staffDetail.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/project/methodPay',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/project/methodPay.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/index/projectDetails',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/index/projectDetails.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/index/projectList',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/index/projectList.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/index/staffDetail',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/index/staffDetail.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/index/manageTime',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/index/manageTime.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+__definePage('pages/common/common',function(){return Vue.extend(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pages/common/common.vue?mpType=page'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())).default)})
+
+
+/***/ })
+/******/ ]);

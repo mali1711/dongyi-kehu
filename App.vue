@@ -25,6 +25,9 @@
 			        success: (res) => {
 			            if (res.statusCode == 200) {
 							let data = res.data.data;
+							if(data.latestVersion==req.version){
+								return true;
+							}
 							console.log(req);
 							let url = '';
 							if(req.system=='ios'){
@@ -35,7 +38,7 @@
 							if(data.currentVersionStatus==true){
 								uni.showModal({ //提醒用户更新
 								    title: "更新最新版本",
-								    content: res.data.note,
+								    content: data.updateInformation,
 									showCancel:true, 
 								    success: (e) => {
 										console.log(url);
@@ -47,7 +50,7 @@
 							}else{
 								uni.showModal({ //提醒用户更新
 								    title: "更新最新版本",
-								    content: res.data.note,
+								    content: data.updateInformation,
 									showCancel:false, 
 								    success: (e) => {
 								        if (e.confirm) { 
