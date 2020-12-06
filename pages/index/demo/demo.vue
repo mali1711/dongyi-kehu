@@ -6,7 +6,7 @@
 		</view>
 		<!-- 加载更多 -->
 		<view class="banner">
-			<image src="../../static/banner.png" mode="aspectFit"></image>
+			<image :src=shopData.banner_images mode="aspectFit"></image>
 		</view>
 		<view class="staffList_null"  v-if="checkStaff(staffList)">请下拉刷新当前界面</view>
 		<view class="staffList">
@@ -17,7 +17,7 @@
 							<view class="staffDesc" @click="selectTime(item.st_id,item.pic_1,pr_id,item.name,item.status,item.distance)">
 								<text>
 									<helang-highlight
-										:content="content" 
+									content="content" 
 										:keys="keys" 
 										:color="color"
 										:weight="weight"
@@ -40,13 +40,14 @@
 <script>
 import goodsFilter from '@/components/yb-filter/index.vue';
 import utils from '@/common/utils.js';
-	import uniList from "../../components/uni-list/uni-list.vue"
-	import uniListItem from "../../components/uni-list-item/uni-list-item.vue"
+import uniList from "../../components/uni-list/uni-list.vue"
+import uniListItem from "../../components/uni-list-item/uni-list-item.vue"
 
 export default {
 	data() {
 		return {
 			// 默认双列显示
+			shopData:{},
 			goodsListTemplate: 2,
 			pr_id:'',
 			// 过滤参数
@@ -56,7 +57,7 @@ export default {
 			color:'',
 			content:'',
 			title: '你好董扬',
-			staffList : null,
+			staffList : {},
 			block:'推荐技师',
 			longitude:'',
 			latitude:'',
@@ -64,7 +65,7 @@ export default {
 				sort:'最新',
 				order:1
 			},
-			cateList:[{name:'卤菜',value:'100001'},{name:'凉菜',value:'100002'},{name:'酒水',value:'100003'}]
+			cateList:[{name:'',value:'100001'},{name:'',value:'100002'},{name:'',value:'100003'}]
 		};
 	},
 	methods: {
@@ -97,7 +98,6 @@ export default {
 				complete: () => {}
 			});
 		}
-		
 		// 点击了右侧的模板选择按钮：即单列还是双列展示商品
 		,goodsTemplateChanged(templateValue){
 			
@@ -110,9 +110,7 @@ export default {
 				})
 			}else{
 				uni.navigateTo({
-					//url:'/pages/project/stToProTime?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name
 					url:'/pages/index/staffDetail?st_id='+st_id+'&pic_1='+pic_1+'&pr_id='+pr_id+'&stname='+name
-		
 					})
 			}
 		}
@@ -124,9 +122,9 @@ export default {
 			            var enable = cllocationManger.locationServicesEnabled();    
 			            var status = cllocationManger.authorizationStatus();     
 			            if (enable && status != 2) {    
-			                console.log("手机系统的定位已经打开");    
+			                //console.log("手机系统的定位已经打开");    
 			            } else {   
-			                console.log("手机系统的定位没有打开");  
+			                //console.log("手机系统的定位没有打开");  
 			                                 //  定位没有开启时  提示用户是否开启  
 			                  plus.nativeUI.confirm("定位权限没有开启，是否去开启？", function(e) {    
 			                        if (e.index == 0) {    
@@ -145,14 +143,26 @@ export default {
 			                    });    
 			            }    
 			                         plus.ios.deleteObject(cllocationManger);   
+		},
+		shopInfo(){
+			var tt = this;
+			uni.request({
+				url:this.apiServer+'/api/shop/1',
+				success(res) {
+					tt.shopData = res.data.data;
+				}
+			})
 		}
-		
 	}
 	,onReady: function() {	
 		//this.loadCouponListList();
 	},
+	onShow() {
+		this.checkLogin();
+	},
 	onLoad: function(options) {
-	this.dingweiQuanxian();
+	this.shopInfo();
+	this.checkLogin();
 	uni.getLocation({
 		type:'gcj02',
 		altitude:true,
@@ -160,29 +170,28 @@ export default {
 			uni.setStorageSync('LATITUDE',res.latitude);
 			uni.setStorageSync('LONGITUDE',res.longitude);
 		}
-	})
-
-		var tt = this;
-		var intervalID =  setInterval(function(){
-			uni.startPullDownRefresh({
-				success(res) {
-					if(tt.staffList==null){
-						console.log(intervalID);
-					}else{
-						clearInterval(intervalID)
-					}
-				}
-			});
-		}, 1000)
-		
-
-			function demo(){
-				if(tt.staffList==null){
-
-				}
-
-			};
-	
+	});
+	let lng = uni.getStorageSync('LONGITUDE');
+	let lat = uni.getStorageSync('LATITUDE'); 
+	uni.request({
+		url: this.apiServer+'/api/staff/',
+		method: 'GET',
+		data: {
+			filter:'create_time',//排序字段
+			order:1,//升序或者降序 1，0
+			lng:lng,
+			lat:lat
+		},
+		success: res => {
+			console.log("信息获取成功");
+			this.staffList = res.data.data;
+		},
+		fail: () => {
+			console.log("信息获取失败");
+		},
+		complete: () => {}
+	});
+	this.dingweiQuanxian();//检查用户是否开启了定位权限
 	},
 	onPullDownRefresh() {
 		let lng = uni.getStorageSync('LONGITUDE');
@@ -243,7 +252,7 @@ export default {
 
 <style>
 	.staffList{
-		margin-top: 50rpx;
+		margin-top: 30rpx;
 	}
 	.staffList_null{
 		text-align: center;
@@ -313,8 +322,7 @@ export default {
 		margin-right: 6rpx;
 	}
 	.banner image{
-		width: 750rpx;
-		height: 350rpx;
+		width: 100%;
 	}
 	.nav{
 		display: flex;

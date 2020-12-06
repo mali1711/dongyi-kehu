@@ -2,8 +2,8 @@
     "name" : "董杨",
     "appid" : "__UNI__5B0218D",
     "description" : "上门服务app",
-    "versionName" : "1.0.5",
-    "versionCode" : 105,
+    "versionName" : "1.0.8",
+    "versionCode" : 108,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
@@ -90,7 +90,13 @@
                         "appkey_android" : "294b9ebc20eb4b725930ac26352f3e37"
                     }
                 },
-                "oauth" : {}
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wxeee9b5e1adc48757",
+                        "appsecret" : "",
+                        "UniversalLinks" : ""
+                    }
+                }
             },
             "splashscreen" : {
                 "android" : {

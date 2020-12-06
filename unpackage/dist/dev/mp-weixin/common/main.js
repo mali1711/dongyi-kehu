@@ -149,12 +149,37 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   },
   onShow: function onShow() {
 
   },
   onHide: function onHide() {
-    console.log('App Hide');
   } };exports.default = _default;
 
 /***/ }),

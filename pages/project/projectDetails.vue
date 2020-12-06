@@ -163,7 +163,7 @@
 						}
 				    },
 				    fail: function (res) {
-				        console.log(res.errMsg);
+		
 				    }
 				});
 			}},
@@ -206,10 +206,11 @@
 				    duration: 2000
 				});
 			},
-			balancePay(orderInfo){  //余额支付
+			balancePay(){  //余额支付
+			console.log(this.orderInfo);
 				uni.request({
 					url:this.apiServer+"/api/order/save",
-					data:orderInfo,
+					data:this.orderInfo,
 					method:'POST',
 					success: (res) => {
 						uni.showModal({
@@ -237,7 +238,7 @@
 			                res(result);
 			            },
 			            fail: (e) => {
-							console.log(e);
+					
 			                res(e);
 			            }
 			        })

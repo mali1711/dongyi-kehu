@@ -8,15 +8,12 @@
 			        "appid": plus.runtime.appid,  
 			        "version": plus.runtime.version,
 					"system":uni.getSystemInfoSync().platform,
-			    };  
-				 //console.log(req);
-				
+			    }; 				
 				uni.getLocation({
 					type:'gcj02',
 					altitude:true,
 					success(res) {
-				        //console.log('当前位置的经度：' + res.longitude);
-				        //console.log('当前位置的纬度：' + res.latitude);
+
 					}
 				})
 			    uni.request({
@@ -25,37 +22,41 @@
 			        success: (res) => {
 			            if (res.statusCode == 200) {
 							let data = res.data.data;
-							console.log(req);
-							let url = '';
-							if(req.system=='ios'){
-								url = data.iosUrl
+							if(data.latestVersion==req.version){
+								console.log(data);
+								return true;
 							}else{
-								url = data.androidUrl
-							}
-							if(data.currentVersionStatus==true){
-								uni.showModal({ //提醒用户更新
-								    title: "更新最新版本",
-								    content: res.data.note,
-									showCancel:true, 
-								    success: (e) => {
-										console.log(url);
-								        if (e.confirm){
-								            plus.runtime.openURL(url);  //打开web下载安装
-								        }
-								    },
-								})
-							}else{
-								uni.showModal({ //提醒用户更新
-								    title: "更新最新版本",
-								    content: res.data.note,
-									showCancel:false, 
-								    success: (e) => {
-								        if (e.confirm) { 
-								            plus.runtime.openURL(url);  //打开web下载安装
-								        }
-								    },
-									
-								})
+								let url = '';
+								if(req.system=='ios'){
+									url = data.iosUrl
+								}else{
+									url = data.androidUrl
+								}
+								if(data.currentVersionStatus==false){
+/* 									uni.showModal({ //提醒用户更新
+									    title: "更新最新版本",
+									    content: data.updateInformation,
+										showCancel:true, 
+									    success: (e) => {
+									        if (e.confirm){
+									            plus.runtime.openURL(url);  //打开web下载安装
+									        }
+									    },
+									}) */
+								}else{
+									uni.showModal({ //提醒用户更新
+									    title: "更新最新版本",
+									    content: data.updateInformation,
+										showCancel:false, 
+									    success: (e) => {
+									        if (e.confirm) { 
+									            plus.runtime.openURL(url);  //打开web下载安装
+									        }
+									    },
+										
+									})
+								}
+								
 							}
 
 			            }  
@@ -67,7 +68,6 @@
 			
 		},
 		onHide: function() {
-			console.log('App Hide')
 		}
 	}
 </script>

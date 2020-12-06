@@ -1,10 +1,5 @@
 {
   "navigationBarTitleText": "董杨在线上门服务",
   "enablePullDownRefresh": true,
-  "usingComponents": {
-    "uni-list": "/components/uni-list/uni-list",
-    "uni-list-item": "/components/uni-list-item/uni-list-item",
-    "helang-highlight": "/components/helang-highlight/helang-highlight",
-    "goods-filter": "/components/yb-filter/index"
-  }
+  "usingComponents": {}
 }
