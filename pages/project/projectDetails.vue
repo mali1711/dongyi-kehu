@@ -78,6 +78,7 @@
 				selectUser:false,
 				stname:'请选择技师',
 				address:'请选择地址',
+				detailed:'',
 				projectpic:'',
 				name:''
 			}
@@ -121,6 +122,7 @@
 							t.mobile = data.data.mobile;
 							t.longitude = data.data.longitude;
 							t.latitude = data.data.latitude;
+							t.detailed = data.data.detailed
 						}
 					},
 				});
@@ -137,7 +139,7 @@
 					st_id:this.st_id,
 					pr_id:this.pr_id,
 					subtime:this.subscribetime,
-					address: this.address,
+					address: this.address+this.detailed,
 					address_contacts:this.name,
 					address_mobile:this.mobile,
 					longitude:this.longitude,
@@ -181,20 +183,18 @@
 				    provider: 'alipay',
 				    orderInfo: orderInfo.data,
 				    success: (e) => {
-				        console.log("success", e);
 				        uni.showToast({
 				            title: "支付成功"
 				        })
 				    },
 				    fail: (e) => {
-				        console.log("fail", e);
+
 				        uni.showModal({
 				            content: "支付失败",//+ e.errMsg,
 				            showCancel: false
 				        })
 				    },
 					complete: () => {
-				        console.log("payment结束")
 				        this.loading = false;
 				    }
 				})
@@ -207,7 +207,6 @@
 				});
 			},
 			balancePay(){  //余额支付
-			console.log(this.orderInfo);
 				uni.request({
 					url:this.apiServer+"/api/order/save",
 					data:this.orderInfo,
@@ -273,6 +272,7 @@
 							});
 						}else{
 							this.address = data.data.address;
+							this.detailed = data.data.detailed;
 							this.name = data.data.name;
 							this.mobile = data.data.mobile;
 							this.longitude = data.data.longitude;

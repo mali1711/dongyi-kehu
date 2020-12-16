@@ -217,6 +217,7 @@ __webpack_require__.r(__webpack_exports__);
       selectUser: false,
       stname: '请选择技师',
       address: '请选择地址',
+      detailed: '',
       projectpic: '',
       name: '' };
 
@@ -260,6 +261,7 @@ __webpack_require__.r(__webpack_exports__);
             t.mobile = data.data.mobile;
             t.longitude = data.data.longitude;
             t.latitude = data.data.latitude;
+            t.detailed = data.data.detailed;
           }
         } });
 
@@ -276,7 +278,7 @@ __webpack_require__.r(__webpack_exports__);
         st_id: this.st_id,
         pr_id: this.pr_id,
         subtime: this.subscribetime,
-        address: this.address,
+        address: this.address + this.detailed,
         address_contacts: this.name,
         address_mobile: this.mobile,
         longitude: this.longitude,
@@ -320,20 +322,18 @@ __webpack_require__.r(__webpack_exports__);
                   provider: 'alipay',
                   orderInfo: orderInfo.data,
                   success: function success(e) {
-                    console.log("success", e);
                     uni.showToast({
                       title: "支付成功" });
 
                   },
                   fail: function fail(e) {
-                    console.log("fail", e);
+
                     uni.showModal({
                       content: "支付失败", //+ e.errMsg,
                       showCancel: false });
 
                   },
                   complete: function complete() {
-                    console.log("payment结束");
                     _this2.loading = false;
                   } });case 7:case "end":return _context.stop();}}}, _callee);}))();
 
@@ -346,7 +346,6 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     balancePay: function balancePay() {//余额支付
-      console.log(this.orderInfo);
       uni.request({
         url: this.apiServer + "/api/order/save",
         data: this.orderInfo,
@@ -412,6 +411,7 @@ __webpack_require__.r(__webpack_exports__);
 
           } else {
             _this3.address = data.data.address;
+            _this3.detailed = data.data.detailed;
             _this3.name = data.data.name;
             _this3.mobile = data.data.mobile;
             _this3.longitude = data.data.longitude;

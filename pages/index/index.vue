@@ -106,6 +106,7 @@ export default {
 				success(res) {
 					tt.shopData = res.data.data;
 					tt.swiperList[0]['url'] = tt.shopData.banner_images;
+					console.log(tt.shopData.banner_images);
 				}
 			})
 		},
